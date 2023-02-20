@@ -54,7 +54,6 @@ public:
 	void UpdateFiring() JMP_THIS(0x736DF0);
 	void UpdateVisceroid() JMP_THIS(0x737180);
 	void UpdateDisguise() JMP_THIS(0x7468C0);
-	void Update() JMP_THIS(0x7360C0);
 
 	void Explode() JMP_THIS(0x738680);
 

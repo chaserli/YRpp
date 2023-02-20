@@ -15,6 +15,8 @@ namespace GameStrings
 	GAMEMD_STRING(LSSOBS_SHP    , 0x8297F4u);
 	GAMEMD_STRING(_800          , 0x8297DCu);
 	GAMEMD_STRING(_640          , 0x8297E0u);
+	GAMEMD_STRING(_none_        , 0x817474u);
+	GAMEMD_STRING(none          , 0x817694u);
 
 	// ini file names
 	GAMEMD_STRING(UIMD_INI    , 0x827DC8u);
@@ -37,6 +39,10 @@ namespace GameStrings
 	GAMEMD_STRING(ToolTips    , 0x833188u);
 	GAMEMD_STRING(CrateRules  , 0x839E9Cu);
 	GAMEMD_STRING(JumpjetControls,0x839D58u);
+	GAMEMD_STRING(Waypoints   , 0x82DB0Cu);
+	GAMEMD_STRING(VariableNames, 0x83D824u);
+
+	GAMEMD_STRING(MCVRedeploys, 0x83CF68);
 
 	// EVA entry names
 	GAMEMD_STRING(EVA_StructureSold      , 0x819030u);
