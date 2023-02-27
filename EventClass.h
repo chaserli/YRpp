@@ -284,7 +284,9 @@ public:
 
 	EventClass& operator=(const EventClass& another)
 	{
-		memcpy(this, &another, sizeof(*this));
+		if (this != &another)
+			memcpy(this, &another, sizeof(*this));
+		return *this;
 	}
 
 	EventType Type;
