@@ -6,7 +6,7 @@
 
 class DSurface;
 struct RectangleStruct;
-
+class GadgetClass;
 class NOVTABLE GScreenClass : public IGameMap
 {
 public:
