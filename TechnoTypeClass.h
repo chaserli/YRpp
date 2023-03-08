@@ -373,7 +373,8 @@ public:
 	int             TurretCount;
 	int             WeaponCount;
 	bool            IsChargeTurret;
-	int             TurretWeapon[0x21];
+	int             TurretWeapon[MaxWeapons];
+	CoordStruct     AlternativeFLH[5];
 	WeaponStruct	Weapon[MaxWeapons];
 	bool            ClearAllWeapons;
 	WeaponStruct	EliteWeapon[MaxWeapons];
