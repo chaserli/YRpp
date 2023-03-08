@@ -251,7 +251,7 @@ public:
 	virtual void AddPassenger(FootClass* pPassenger) RX;
 	virtual bool CanDisguiseAs(AbstractClass*pTarget) const R0;
 	virtual bool TargetAndEstimateDamage(DWORD dwUnk, DWORD dwUnk2) R0;
-	virtual DWORD vt_entry_3A0() R0;
+	virtual void Stun() RX;
 	virtual bool TriggersCellInset(AbstractClass *pTarget) R0;
 	virtual bool IsCloseEnough(AbstractClass *pTarget, int idxWeapon) const R0;
 	virtual bool IsCloseEnoughToAttack(AbstractClass *pTarget) const R0;

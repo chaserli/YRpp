@@ -55,7 +55,7 @@ public:
 	virtual bool NextMission() R0;
 	virtual void ForceMission(Mission mission) RX;
 
-	virtual void vt_entry_1F4(Mission mission, TechnoClass* target, AbstractClass* destination) RX;
+	virtual void Override_Mission(Mission mission, AbstractClass* target, AbstractClass* destination) RX;
 	virtual bool Mission_Revert() R0;
 	virtual bool MissionIsOverriden() const R0;
 	virtual bool ReadyToNextMission() const R0;
@@ -106,7 +106,7 @@ protected:
 public:
 
 	Mission  CurrentMission;
-	Mission  unknown_mission_B0;
+	Mission  SuspendedMission;
 	Mission  QueuedMission;
 	bool     unknown_bool_B8;
 	int      MissionStatus;
