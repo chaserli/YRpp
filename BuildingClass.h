@@ -68,6 +68,9 @@ public:
 
 	// non-vt
 
+	void UpdateAnimations()
+		{ JMP_THIS(0x4509D0); }
+
 	int GetCurrentFrame() { JMP_THIS(0x43EF90); }
 
 	bool IsAllFogged() const { JMP_THIS(0x457A10); }
