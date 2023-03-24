@@ -1,19 +1,31 @@
 #pragma once
-
-// Timer that counts down from specified value towards zero, counted in frames.
-class CDTimerClass
+template<typename T>
+concept TimerType = std::convertible_to<T, int> && requires (T t)
 {
-public:
+	{ t() }->std::same_as<long>;
+};
+
+struct FrameTimer
+{
+	long operator()()const { return Unsorted::CurrentFrame; }
+	operator long() const { return Unsorted::CurrentFrame; }
+};
+
+// struct SystemTimer;
+
+template<TimerType Clock>
+struct TimerStruct
+{
 	int StartTime { -1 };
-	int : 32; // timer
+	Clock CurrentTime;
 	int TimeLeft { 0 };
 
-	constexpr CDTimerClass() = default;
-	CDTimerClass(int duration) { this->Start(duration); }
+	constexpr TimerStruct() = default;
+	TimerStruct(int duration) { this->Start(duration); }
 
 	void Start(int duration)
 	{
-		this->StartTime = Unsorted::CurrentFrame;
+		this->StartTime = this->CurrentTime;
 		this->TimeLeft = duration;
 	}
 
@@ -36,7 +48,7 @@ public:
 	{
 		if (!this->IsTicking())
 		{
-			this->StartTime = Unsorted::CurrentFrame;
+			this->StartTime = this->CurrentTime;
 		}
 	}
 
@@ -47,7 +59,7 @@ public:
 			return this->TimeLeft;
 		}
 
-		auto passed =  Unsorted::CurrentFrame - this->StartTime;
+		auto passed = this->CurrentTime - this->StartTime;
 		auto left = this->TimeLeft - passed;
 
 		return (left <= 0) ? 0 : left;
@@ -93,7 +105,13 @@ public:
 	}
 };
 
+// Timer that counts down from specified value towards zero, counted in frames.
+using CDTimerClass = TimerStruct<FrameTimer>;
+
+static_assert(offsetof(CDTimerClass, TimeLeft) == 0x8);
+
 // Timer that counts down towards zero at specified rate, counted in frames.
+
 class RateTimer : public CDTimerClass
 {
 public:
