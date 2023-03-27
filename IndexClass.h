@@ -26,6 +26,7 @@ public:
 	void Clear();
 	bool Reverse(int nAmount);
 	inline void Sort();
+	static int __cdecl Comparator(void const* ptr, void const* ptr2);
 
 	struct NodeElement
 	{
@@ -247,6 +248,21 @@ bool IndexClass<TKey, TValue>::RemoveIndex(TKey id)
 	return false;
 }
 
+// See RA1 code
+template<typename TKey, typename TValue>
+int __cdecl IndexClass<TKey, TValue>::Comparator(void const* ptr1, void const* ptr2)
+{
+	const NodeElement* n1 = static_cast<const NodeElement*>(ptr1);
+	const NodeElement* n2 = static_cast<const NodeElement*>(ptr2);
+
+	if (n1->ID == n2->ID)
+		return 0;
+	if (n1->ID < n2->ID)
+		return -1;
+
+	return 1;
+}
+
 template<typename TKey, typename TValue>
 typename IndexClass<TKey, TValue>::NodeElement const* IndexClass<TKey, TValue>::SearchForNode(TKey id) const
 {
@@ -258,5 +274,6 @@ typename IndexClass<TKey, TValue>::NodeElement const* IndexClass<TKey, TValue>::
 	NodeElement node;
 	node.ID = id;
 
-	return std::lower_bound(&IndexTable[0], &IndexTable[IndexCount], node);
+	//return std::lower_bound(&IndexTable[0], &IndexTable[IndexCount], node);
+	return static_cast<const NodeElement*>(std::bsearch(&node, &IndexTable[0], IndexCount, sizeof(IndexTable[0]), Comparator));
 }
