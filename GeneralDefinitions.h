@@ -254,7 +254,7 @@ enum class TextPrintType : int
 };
 MAKE_ENUM_FLAGS(TextPrintType);
 
-enum class TriggerPersistance : unsigned int
+enum class TriggerPersistence : unsigned int
 {
 	Volatile = 0, // trigger for the first object whose events fired, then disable
 	SemiPersistant = 1, // trigger after all object's events fired, then disable

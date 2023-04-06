@@ -111,7 +111,6 @@ using CDTimerClass = TimerStruct<FrameTimer>;
 static_assert(offsetof(CDTimerClass, TimeLeft) == 0x8);
 
 // Timer that counts down towards zero at specified rate, counted in frames.
-
 class RateTimer : public CDTimerClass
 {
 public:

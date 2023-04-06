@@ -1,9 +1,8 @@
 #pragma once
 
-#include <AbstractClass.h>
+#include <TagTypeClass.h>
 
 //forward declarations
-class TagTypeClass;
 class TriggerClass;
 
 class NOVTABLE TagClass : public AbstractClass
