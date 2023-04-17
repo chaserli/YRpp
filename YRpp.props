@@ -117,6 +117,7 @@
     <ClInclude Include="$(YRppDir)\Helpers\Macro.h" />
     <ClInclude Include="$(YRppDir)\Helpers\String.h" />
     <ClInclude Include="$(YRppDir)\Helpers\Template.h" />
+    <ClInclude Include="$(YRppDir)\Helpers\VTable.h" />
 	<!-- Root -->
 	<ClInclude Include="$(YRppDir)\AbstractClass.h" />
     <ClInclude Include="$(YRppDir)\AbstractTypeClass.h" />
@@ -314,7 +315,6 @@
     <ClInclude Include="$(YRppDir)\VoxClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimClass.h" />
     <ClInclude Include="$(YRppDir)\VoxelAnimTypeClass.h" />
-    <ClInclude Include="$(YRppDir)\VTables.h" />
     <ClInclude Include="$(YRppDir)\WarheadTypeClass.h" />
     <ClInclude Include="$(YRppDir)\WaveClass.h" />
     <ClInclude Include="$(YRppDir)\WaypointPathClass.h" />

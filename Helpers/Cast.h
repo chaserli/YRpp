@@ -1,14 +1,17 @@
 #pragma once
 
 #include <AbstractClass.h>
-
-#include <type_traits>
+#include "VTable.h"
 
 class ObjectClass;
 class MissionClass;
 class RadioClass;
 class TechnoClass;
 class FootClass;
+
+// Just a proposal for the conventions :
+// either we use abstract_cast everywhere or remove abstract_cast and only use specific_cast and generic_cast.
+// what do you think?
 
 template <typename T>
 __forceinline T specific_cast(AbstractClass* pAbstract) {
@@ -28,7 +31,7 @@ __forceinline T specific_cast(const AbstractClass* pAbstract) {
 		"specific_cast: T is required to be a type derived from AbstractClass.");
 
 	static_assert(!std::is_abstract<Base>::value,
-		"specific_cast: Abstract types (not fully implemented classes) are not suppored.");
+		"specific_cast: Abstract types (not fully implemented classes) are not supported.");
 
 	if(pAbstract && pAbstract->WhatAmI() == Base::AbsID) {
 		return static_cast<T>(pAbstract);

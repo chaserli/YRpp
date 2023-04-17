@@ -177,6 +177,9 @@ public:
 	//Destructor
 	virtual ~TechnoClass() RX;
 
+	//ObjectClass
+	virtual bool Limbo() override JMP_THIS(0x6F6AC0);
+
 	//TechnoClass
 	virtual bool IsUnitFactory() const R0;
 	virtual bool IsCloakable() const R0;
@@ -467,9 +470,6 @@ public:
 
 	WeaponStruct* GetPrimaryWeapon() const
 		{ JMP_THIS(0x70E1A0); }
-
-	virtual bool Limbo() override
-		{ JMP_THIS(0x6F6AC0); }
 
 	int GetIonCannonValue(AIDifficulty difficulty) const;
 

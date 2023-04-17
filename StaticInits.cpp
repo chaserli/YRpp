@@ -2,8 +2,6 @@
 
 #include <YRPP.h>
 
-//include <VTables.h>
-
 #define ALIAS(Type, Obj, Addr) \
 	Type &Obj = *reinterpret_cast<Type*>(Addr);
 

@@ -61,7 +61,4 @@ virtual void alla(double malla) RX;
 
 #define NOVTABLE __declspec(novtable)
 
-#define VTABLE_SET(item, addr) ((int*)item)[0] = addr
-#define VTABLE_GET(item) (((int*)item)[0])
-
 struct noinit_t final {};
