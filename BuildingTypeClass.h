@@ -28,6 +28,7 @@ class NOVTABLE BuildingTypeClass : public TechnoTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::BuildingType;
+	static constexpr uintptr_t AbsVTable = 0x7E4570;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(BuildingTypeClass, 0xA83C68u);
@@ -66,9 +67,6 @@ public:
 
 	bool CanPlaceHere(CellStruct* cell, HouseClass* owner) const
 		{ JMP_THIS(0x464AC0); }
-
-	bool IsUndeployable() const
-		{ JMP_THIS(0x465D40); }
 
 	// helpers
 	bool HasSuperWeapon(int index) const {

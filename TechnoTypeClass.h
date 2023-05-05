@@ -37,6 +37,11 @@ struct AbilitiesStruct
 	bool TIBERIUM_HEAL; //0x0F
 	bool GUARD_AREA; //0x10
 	bool CRUSHER; //0x11
+
+	bool& operator[](Ability i)
+	{
+		return reinterpret_cast<bool*>(this)[static_cast<int>(i)];
+	}
 };
 
 struct TurretControl

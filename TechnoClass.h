@@ -441,7 +441,7 @@ public:
 		{ JMP_THIS(0x707CB0); }
 
 	// returns the house that created this object (factoring in Mind Control)
-	HouseClass * GetOriginalOwner()
+	HouseClass * GetOriginalOwner() const
 		{ JMP_THIS(0x70F820); }
 
 	void FireDeathWeapon(int additionalDamage)

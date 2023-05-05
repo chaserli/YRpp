@@ -36,6 +36,7 @@ class NOVTABLE InfantryTypeClass : public TechnoTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::InfantryType;
+	static constexpr uintptr_t AbsVTable = 0x7EB610;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(InfantryTypeClass, 0xA8E348u);

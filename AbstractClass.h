@@ -5,8 +5,7 @@
 #include <GeneralStructures.h>
 #include <ArrayClasses.h>
 #include <IndexClass.h>
-
-#include <Helpers\CompileTime.h>
+#include <GameStrings.h>
 
 //forward declarations
 class TechnoClass;
@@ -166,4 +165,9 @@ public:
 	LONG RefCount;
 	bool Dirty;		// for IPersistStream.
 	PROTECTED_PROPERTY(BYTE, padding_21[0x3]);
+};
+
+template<typename T>
+concept HasAbsVTable = std::is_base_of_v<AbstractClass,T> && requires {
+	{ T::AbsVTable }-> std::convertible_to<uintptr_t>;
 };

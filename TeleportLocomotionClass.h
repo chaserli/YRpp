@@ -7,6 +7,9 @@
 class NOVTABLE TeleportLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7F5000;
+	static constexpr reference<CLSID const, 0x7E9A90u> const ClassGUID {};
+
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;
 	virtual ULONG __stdcall AddRef() R0;
@@ -72,11 +75,3 @@ public:
 	CDTimerClass Timer;
 	ILocomotion* Piggybackee;
 };
-
-template<>
-__forceinline TeleportLocomotionClass* locomotion_cast<TeleportLocomotionClass*>(ILocomotion* pThis)
-{
-	CLSID locoCLSID;
-	return (SUCCEEDED(static_cast<LocomotionClass*>(pThis)->GetClassID(&locoCLSID)) && locoCLSID == LocomotionClass::CLSIDs::Teleport) ?
-		static_cast<TeleportLocomotionClass*>(pThis) : nullptr;
-}

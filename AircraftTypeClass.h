@@ -6,6 +6,7 @@ class NOVTABLE AircraftTypeClass : public TechnoTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::AircraftType;
+	static constexpr uintptr_t AbsVTable = 0x7E2868;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(AircraftTypeClass, 0xA8B218u);

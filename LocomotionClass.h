@@ -15,9 +15,7 @@ public:
 	{
 	public:
 		static constexpr reference<CLSID const, 0x7E9A30u> const Drive {};
-		static constexpr reference<CLSID const, 0x7E9AC0u> const Jumpjet {};
 		static constexpr reference<CLSID const, 0x7E9A40u> const Hover {};
-		static constexpr reference<CLSID const, 0x7E9AD0u> const Rocket {};
 		static constexpr reference<CLSID const, 0x7E9A50u> const Tunnel {};
 		static constexpr reference<CLSID const, 0x7E9A60u> const Walk {};
 		static constexpr reference<CLSID const, 0x7E9A70u> const Droppod {};
@@ -25,6 +23,8 @@ public:
 		static constexpr reference<CLSID const, 0x7E9A90u> const Teleport {};
 		static constexpr reference<CLSID const, 0x7E9AA0u> const Mech {};
 		static constexpr reference<CLSID const, 0x7E9AB0u> const Ship {};
+		static constexpr reference<CLSID const, 0x7E9AC0u> const Jumpjet {};
+		static constexpr reference<CLSID const, 0x7E9AD0u> const Rocket {};
 	};
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;
@@ -181,18 +181,41 @@ public:
 	int RefCount;
 };
 
-template <typename T = LocomotionClass*>
+template<typename T>
+concept LocoHasILocoVtbl = std::is_base_of_v<LocomotionClass, std::remove_cvref_t<T>> && requires
+{
+	{ T::ILocoVTable }->std::convertible_to<uintptr_t>;
+};
+
+template<typename T>
+concept LocoHasClassGUID = std::is_base_of_v<LocomotionClass, std::remove_cvref_t<T>> &&
+std::is_same_v<std::remove_reference_t<decltype(T::ClassGUID.get())>, CLSID const>;
+
+template <typename T>
 __forceinline T locomotion_cast(ILocomotion* iLoco)
+{
+	using Base = std::remove_cvref_t<std::remove_const_t<std::remove_pointer_t<T>>>;
+	static_assert(std::is_base_of_v<LocomotionClass, Base> && !std::is_same_v<LocomotionClass, Base>,
+		"T needs to point to a class derived from LocomotionClass");
+	if constexpr (LocoHasILocoVtbl<Base>)
+	{
+		return VTable::Get(iLoco) == Base::ILocoVTable ? static_cast<T>(iLoco) : nullptr;
+	}
+	else if constexpr (LocoHasClassGUID<Base>)
+	{
+		CLSID locoCLSID;
+		return (SUCCEEDED(static_cast<LocomotionClass*>(iLoco)->GetClassID(&locoCLSID)) && locoCLSID == Base::ClassGUID()) ?
+			static_cast<T>(iLoco) : nullptr;
+	}
+	else
+		static_assert(false, "Cannot Use locomotion_cast here yet");
+}
+
+template<typename T>
+__forceinline T locomotion_cast(YRComPtr<ILocomotion>& comLoco)
 {
 	using Base = std::remove_const_t<std::remove_pointer_t<T>>;
 	static_assert(std::is_base_of<LocomotionClass, Base>::value,
 		"locomotion_cast: T is required to be a sub-class of LocomotionClass.");
-
-	return static_cast<T>(iLoco);
-}
-
-template<typename T = LocomotionClass*>
-__forceinline T locomotion_cast(YRComPtr<ILocomotion>& comLoco)
-{
 	return locomotion_cast<T>(comLoco.get());
 }

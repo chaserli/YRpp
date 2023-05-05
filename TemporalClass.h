@@ -11,6 +11,7 @@ class NOVTABLE TemporalClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Temporal;
+	static constexpr uintptr_t AbsVTable = 0x7F5180;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<TemporalClass*>, 0xB0EC60u> const Array{};

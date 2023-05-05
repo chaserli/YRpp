@@ -7,6 +7,8 @@
 class __declspec(align(4)) NOVTABLE TunnelLocomotionClass : public LocomotionClass
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7F5A24;
+	static constexpr reference<CLSID const, 0x7E9A50u> const ClassGUID {};
 
 	enum State
 	{
@@ -65,11 +67,3 @@ public:
 };
 
 static_assert(sizeof(TunnelLocomotionClass) == 0x3C);
-
-template<>
-__forceinline TunnelLocomotionClass* locomotion_cast<TunnelLocomotionClass*>(ILocomotion* pThis)
-{
-	CLSID locoCLSID;
-	return (SUCCEEDED(static_cast<LocomotionClass*>(pThis)->GetClassID(&locoCLSID)) && locoCLSID == LocomotionClass::CLSIDs::Tunnel) ?
-		static_cast<TunnelLocomotionClass*>(pThis) : nullptr;
-}

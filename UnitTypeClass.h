@@ -8,6 +8,7 @@ class NOVTABLE UnitTypeClass : public TechnoTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::UnitType;
+	static constexpr uintptr_t AbsVTable = 0x7F6218;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(UnitTypeClass, 0xA83CE0u);

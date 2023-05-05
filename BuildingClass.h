@@ -30,6 +30,7 @@ class NOVTABLE BuildingClass : public TechnoClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Building;
+	static constexpr uintptr_t AbsVTable = 0x7E3EBC;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<BuildingClass*>, 0xA8EB40u> const Array{};

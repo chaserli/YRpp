@@ -7,6 +7,9 @@
 class NOVTABLE DriveLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7E7EB0;
+	static constexpr reference<CLSID const, 0x7E9A30u> const ClassGUID {};
+
 	// TODO stub virtuals implementations
 
 	//Destructor
@@ -48,11 +51,3 @@ public:
 };
 
 static_assert(sizeof(DriveLocomotionClass) == 0x70);
-
-template<>
-__forceinline DriveLocomotionClass* locomotion_cast<DriveLocomotionClass*>(ILocomotion* pThis)
-{
-	CLSID locoCLSID;
-	return (SUCCEEDED(static_cast<LocomotionClass*>(pThis)->GetClassID(&locoCLSID)) && locoCLSID == LocomotionClass::CLSIDs::Drive) ?
-		static_cast<DriveLocomotionClass*>(pThis) : nullptr;
-}

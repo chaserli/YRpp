@@ -7,6 +7,9 @@
 class NOVTABLE JumpjetLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7ECD68;
+	static constexpr reference<CLSID const, 0x7E9AC0u> const ClassGUID {};
+
 	enum State
 	{
 		Grounded = 0,
@@ -111,11 +114,3 @@ public:
 };
 
 static_assert(sizeof(JumpjetLocomotionClass) == 0x98);
-
-template<>
-__forceinline JumpjetLocomotionClass* locomotion_cast<JumpjetLocomotionClass*>(ILocomotion* pThis)
-{
-	CLSID locoCLSID;
-	return (SUCCEEDED(static_cast<LocomotionClass*>(pThis)->GetClassID(&locoCLSID)) && locoCLSID == LocomotionClass::CLSIDs::Jumpjet) ?
-		static_cast<JumpjetLocomotionClass*>(pThis) : nullptr;
-}

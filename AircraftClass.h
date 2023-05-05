@@ -12,6 +12,7 @@ class NOVTABLE AircraftClass : public FootClass, public IFlyControl
 {
 public:
 	static const AbstractType AbsID = AbstractType::Aircraft;
+	static constexpr uintptr_t AbsVTable = 0x7E22A4;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<AircraftClass*>, 0xA8E390u> const Array{};

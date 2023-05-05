@@ -33,6 +33,7 @@ public:
 	virtual ~AnimClass() RX;
 
 	//AbstractClass
+	virtual void PointerExpired(AbstractClass* pAbstract, bool detachFromAll) override JMP_THIS(0x425150);
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int	Size() const R0;
 
@@ -43,9 +44,6 @@ public:
 
 	void SetOwnerObject(ObjectClass *pOwner)
 		{ JMP_THIS(0x424B50); }
-		
-	void DetachFromObject(ObjectClass* pTarget, bool detachFromAll)
-		{ JMP_THIS(0x425150); }
 
 	void Pause() {
 		this->Paused = true;

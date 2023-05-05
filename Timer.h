@@ -2,7 +2,7 @@
 template<typename T>
 concept TimerType = std::convertible_to<T, int> && requires (T t)
 {
-	{ t() }->std::same_as<long>;
+	{ t() }->std::convertible_to<long>;
 };
 
 struct FrameTimer

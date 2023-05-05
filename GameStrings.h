@@ -17,6 +17,9 @@ namespace GameStrings
 	GAMEMD_STRING(_640          , 0x8297E0u);
 	GAMEMD_STRING(_none_        , 0x817474u);
 	GAMEMD_STRING(none          , 0x817694u);
+	GAMEMD_STRING(Neutral       , 0x82BA08u);
+	GAMEMD_STRING(Civilian      , 0x818164u);
+	GAMEMD_STRING(Special       , 0x817318u);
 
 	// ini file names
 	GAMEMD_STRING(UIMD_INI    , 0x827DC8u);

@@ -379,12 +379,12 @@ public:
 
 	// gets the first house of a type with name Neutral
 	static HouseClass* FindNeutral() {
-		return FindByCountryName("Neutral");
+		return FindByCountryName(GameStrings::Neutral);
 	}
 
 	// gets the first house of a type with name Special
 	static HouseClass* FindSpecial() {
-		return FindByCountryName("Special");
+		return FindByCountryName(GameStrings::Special);
 	}
 
 	// gets the first house of a side with this name
@@ -405,7 +405,7 @@ public:
 
 	// gets the first house of a type from the Civilian side
 	static HouseClass* FindCivilianSide() {
-		return FindBySideName("Civilian");
+		return FindBySideName(GameStrings::Civilian);
 	}
 
 	static void __fastcall LoadFromINIList(CCINIClass *pINI)
