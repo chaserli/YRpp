@@ -187,7 +187,7 @@ public:
 
 		OutList->List[OutList->Tail] = event;
 
-		OutList->Timings[OutList->Tail] = static_cast<int>(Imports::TimeGetTime());
+		OutList->Timings[OutList->Tail] = static_cast<int>(Imports::TimeGetTime()());
 
 		++OutList->Count;
 		OutList->Tail = (OutList->Tail + 1) & 127;

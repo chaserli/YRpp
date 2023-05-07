@@ -90,12 +90,12 @@ public:
 
 	virtual ULONG __stdcall AddRef() override
 	{
-		return Imports::InterlockedIncrement(&this->nRefCount);
+		return Imports::InterlockedIncrement()(&this->nRefCount);
 	}
 
 	virtual ULONG __stdcall Release() override
 	{
-		int nNewRef = Imports::InterlockedIncrement(&this->nRefCount);
+		int nNewRef = Imports::InterlockedIncrement()(&this->nRefCount);
 		if (!nNewRef)
 			GameDelete(this);
 		return nNewRef;
