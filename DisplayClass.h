@@ -69,6 +69,14 @@ public:
 	void MarkFoundation(CellStruct * BaseCell, bool Mark)
 		{ JMP_THIS(0x4A95A0); }
 
+	// Submit object to layer.
+	void Submit(ObjectClass* pObject)
+		{ JMP_THIS(0x4A9720); }
+
+	// Remove object from layer.
+	void Remove(ObjectClass* pObject)
+		{ JMP_THIS(0x4A9770); }
+
 protected:
 	//Constructor
 	DisplayClass() {}	//don't need this
