@@ -84,6 +84,9 @@ public:
 	void Render(DSurface* pSurface, bool flag, int eMode)
 		{ JMP_THIS(0x6D3D10); }
 
+	Point2D* ApplyMatrix_Pixel(Point2D *coords, Point2D *offset)
+		{ JMP_THIS(0x6D2070); }
+
 public:
 
 	wchar_t ScreenText[64];
