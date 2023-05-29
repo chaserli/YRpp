@@ -151,15 +151,15 @@ ILocomotion : IUnknown
 {
 	virtual HRESULT __stdcall Link_To_Object(void* pointer) = 0; //Links object to locomotor.
 	virtual bool __stdcall Is_Moving() = 0;	//Sees if object is moving.
-	virtual CoordStruct* __stdcall Destination(CoordStruct* pcoord) = 0;	//Fetches destination coordinate.
-	virtual CoordStruct* __stdcall Head_To_Coord(CoordStruct* pcoord) = 0; // Fetches immediate (next cell) destination coordinate.
+	virtual CoordStruct __stdcall Destination() = 0;	//Fetches destination coordinate.
+	virtual CoordStruct __stdcall Head_To_Coord() = 0; // Fetches immediate (next cell) destination coordinate.
 	virtual Move __stdcall Can_Enter_Cell(CellStruct cell) = 0; //Determine if specific cell can be entered.
 	virtual bool __stdcall Is_To_Have_Shadow() = 0;	//Should object cast a shadow?
 	virtual Matrix3D __stdcall Draw_Matrix(union VoxelIndexKey* pIndex) = 0; //Fetch voxel draw matrix.
 	virtual Matrix3D __stdcall Shadow_Matrix(union VoxelIndexKey* pIndex) = 0;	//Fetch shadow draw matrix.
-	virtual Point2D* __stdcall Draw_Point(Point2D* pPoint) = 0;	//Draw point center location.
-	virtual Point2D* __stdcall Shadow_Point(Point2D* pPoint) = 0;	//Shadow draw point center location.
-	virtual VisualType __stdcall Visual_Character(VARIANT_BOOL unused) = 0;	//Visual character for drawing.
+	virtual Point2D __stdcall Draw_Point() = 0;	//Draw point center location.
+	virtual Point2D __stdcall Shadow_Point() = 0;	//Shadow draw point center location.
+	virtual VisualType __stdcall Visual_Character(bool raw) = 0;	//Visual character for drawing.
 	virtual int __stdcall Z_Adjust() = 0;	//Z adjust control value.
 	virtual ZGradient __stdcall Z_Gradient() = 0;	//Z gradient control value.
 	virtual bool __stdcall Process() = 0;	//Process movement of object.]

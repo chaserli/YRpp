@@ -16,7 +16,7 @@ public:
 	// the magic checksum for version validation - linked in StaticInits
 	static constexpr reference<DWORD, 0x83D560u> const Savegame_Magic{};
 
-	static constexpr reference<DynamicVectorClass<DWORD>, 0xB0BC88u> const COMClasses{};
+	static constexpr reference<DynamicVectorClass<ULONG>, 0xB0BC88u> const COMClasses{};
 
 	static constexpr reference<HWND, 0xB73550u> const hWnd{};
 	static constexpr reference<HINSTANCE, 0xB732F0u> const hInstance{};

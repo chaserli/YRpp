@@ -910,12 +910,14 @@ enum class Layer : int
 	Top = 4
 };
 
-enum class PlacementType : int
+enum class MarkType : int
 {
-	Remove = 0,
-	Put = 1,
-	Redraw = 2,
-	AddContent = 3
+	Up = 0,
+	Down = 1,
+	Change = 2,
+	ChangeRedraw = 3,
+	OverlapDown = 4,
+	OverlapUp = 5
 };
 
 enum class MouseHotSpotX : int
