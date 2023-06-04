@@ -14,6 +14,7 @@ class NOVTABLE SuperClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Super;
+	static constexpr uintptr_t AbsVTable = 0x7F3FE8;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<SuperClass*>, 0xA83CB8u> const Array{};
