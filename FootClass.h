@@ -6,7 +6,6 @@
 
 #include <TechnoClass.h>
 #include <ParasiteClass.h>
-#include <Helpers/ComPtr.h>
 
 //forward declarations
 class LocomotionClass;
@@ -183,7 +182,7 @@ public:
 	DECLARE_PROPERTY(CDTimerClass, unknown_timer_650);
 	DECLARE_PROPERTY(CDTimerClass, SightTimer);
 	DECLARE_PROPERTY(CDTimerClass, BlockagePathTimer);
-	DECLARE_PROPERTY(YRComPtr<ILocomotion>, Locomotor);
+	DECLARE_PROPERTY(ILocomotionPtr, Locomotor);
 	CoordStruct       unknown_point3d_678;
 	signed char       TubeIndex;	//I'm in this tunnel
 	bool              unknown_bool_685;

@@ -114,49 +114,44 @@ public:
 	static void ChangeLocomotorTo(FootClass* Object, const CLSID& clsid)
 	{
 		// remember the current one
-		YRComPtr<ILocomotion> Original(Object->Locomotor);
+		ILocomotionPtr Original(Object->Locomotor);
 
 		// create a new locomotor and link it
 		auto NewLoco = CreateInstance(clsid);
 		NewLoco->Link_To_Object(Object);
 
 		// get piggy interface and piggy original
-		YRComPtr<IPiggyback> Piggy(NewLoco);
-		Piggy->Begin_Piggyback(Original.get());
+		IPiggybackPtr Piggy(NewLoco);
+		Piggy->Begin_Piggyback(Original);
 
 		// replace the current locomotor
 		Object->Locomotor = std::move(NewLoco);
 	}
 
 	// creates a new instance by class ID. returns a pointer to ILocomotion
-	static YRComPtr<ILocomotion> CreateInstance(const CLSID& rclsid)
+	static ILocomotionPtr CreateInstance(const CLSID& rclsid)
 	{
-		return YRComPtr<ILocomotion>(rclsid, nullptr,
+		return ILocomotionPtr(rclsid, nullptr,
 			CLSCTX_INPROC_SERVER | CLSCTX_INPROC_HANDLER | CLSCTX_LOCAL_SERVER);
 	}
 
 	// finds out whether a locomotor is currently piggybacking and restores
 	// the original locomotor. this function ignores Is_Ok_To_End().
-	static bool End_Piggyback(YRComPtr<ILocomotion>& pLoco)
+	static bool End_Piggyback(ILocomotionPtr& pLoco)
 	{
 		if (!pLoco)
-		{
 			Game::RaiseError(E_POINTER);
-		}
 
-		if (YRComPtr<IPiggyback> pPiggy = pLoco)
+		if (IPiggybackPtr pPiggy = pLoco)
 		{
 			if (pPiggy->Is_Piggybacking())
 			{
-				// this frees the current locomotor
-				pLoco.reset(nullptr);
-
-				// this restores the old one
-				auto res = pPiggy->End_Piggyback(pLoco.pointer_to());
+				// _com_ptr_t releases the old pointer automatically,
+				// so we just use it without resetting it
+				auto res = pPiggy->End_Piggyback(&pLoco);
 				if (FAILED(res))
-				{
 					Game::RaiseError(res);
-				}
+
 				return (res == S_OK);
 			}
 		}
@@ -212,11 +207,11 @@ __forceinline T locomotion_cast(ILocomotion* iLoco)
 }
 
 template<typename T>
-__forceinline T locomotion_cast(YRComPtr<ILocomotion>& comLoco)
+__forceinline T locomotion_cast(ILocomotionPtr& comLoco)
 {
 	// TODO concepts
 	using Base = std::remove_const_t<std::remove_pointer_t<T>>;
 	static_assert(std::is_base_of<LocomotionClass, Base>::value,
 		"locomotion_cast: T is required to be a sub-class of LocomotionClass.");
-	return locomotion_cast<T>(comLoco.get());
+	return locomotion_cast<T>(comLoco.GetInterfacePtr());
 }
