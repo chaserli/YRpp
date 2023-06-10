@@ -5,7 +5,6 @@
 #include <Unsorted.h>
 #include <YRCom.h>
 #include <Drawing.h>
-#include <Helpers/ComPtr.h>
 #include <Helpers/CompileTime.h>
 
 class LocomotionClass : public IPersistStream, public ILocomotion
@@ -37,7 +36,7 @@ public:
 
 	//IPersistStream
 	virtual HRESULT __stdcall IsDirty() { JMP_STD(0x4B4C30); }
-	virtual HRESULT __stdcall Load(IStream* pStm) { JMP_STD(0x4C9150); }
+	virtual HRESULT __stdcall Load(IStream* pStm) { JMP_STD(0x55AAC0); } // for some reason was 0x4C9150 aka purecall
 	virtual HRESULT __stdcall Save(IStream* pStm, BOOL fClearDirty) { JMP_STD(0x55AA60); }
 
 	virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize) { JMP_STD(0x55AB40); }
