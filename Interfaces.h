@@ -326,7 +326,7 @@ IPiggyback : IUnknown
 	// End piggyback process and restore locomotor interface pointer.
 	virtual HRESULT __stdcall End_Piggyback(ILocomotion** pointer) = 0;
 
-	// Is it ok to end the piggyback process?
+	// Determines when should the piggybacking be ended (done automatically in FootClass::AI).
 	virtual bool __stdcall Is_Ok_To_End() = 0;
 
 	// Fetches piggybacked locomotor class ID.
