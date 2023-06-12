@@ -124,7 +124,7 @@ public:
 		Piggy->Begin_Piggyback(Original);
 
 		// replace the current locomotor
-		Object->Locomotor = std::move(NewLoco);
+		Object->Locomotor = NewLoco;
 	}
 
 	// creates a new instance by class ID. returns a pointer to ILocomotion
