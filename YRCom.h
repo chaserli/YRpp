@@ -77,10 +77,13 @@ public:
 
 		*ppvObject = nullptr;
 
-		if (riid == __uuidof(IUnknown) || riid == __uuidof(IClassFactory))
-			*ppvObject = this;
+		if (riid == __uuidof(IUnknown))
+			*ppvObject = static_cast<IUnknown*>(this);
 
-		if (!ppvObject)
+		if (riid == __uuidof(IClassFactory))
+			*ppvObject = static_cast<IClassFactory*>(this);
+
+		if (!*ppvObject)
 			return E_NOINTERFACE;
 
 		this->AddRef();
