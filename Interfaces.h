@@ -281,7 +281,7 @@ ILocomotion : IUnknown
 	virtual bool __stdcall Is_Surfacing() = 0;
 
 	// Lifts all occupation bits associated with the object off the map
-	virtual void __stdcall Mark_All_Occupation_Bits(int mark) = 0;
+	virtual void __stdcall Mark_All_Occupation_Bits(MarkType mark) = 0;
 
 	// Is this object in the process of moving into this coord.
 	virtual bool __stdcall Is_Moving_Here(CoordStruct to) = 0;

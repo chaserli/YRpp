@@ -84,7 +84,7 @@ public:
 	virtual int __stdcall Get_Status() { JMP_STD(0x4B4C60); }
 	virtual void __stdcall Acquire_Hunter_Seeker_Target() { JMP_STD(0x4B4C70); }
 	virtual bool __stdcall Is_Surfacing() { JMP_STD(0x4B4C80); }
-	virtual void __stdcall Mark_All_Occupation_Bits(int mark) { JMP_STD(0x4B6620); }
+	virtual void __stdcall Mark_All_Occupation_Bits(MarkType mark) { JMP_STD(0x4B6620); }
 	virtual bool __stdcall Is_Moving_Here(CoordStruct to) { JMP_STD(0x4B6630); }
 	virtual bool __stdcall Will_Jump_Tracks() { JMP_STD(0x4B6640); }
 	virtual bool __stdcall Is_Really_Moving_Now() { JMP_STD(0x4B4C50); }
