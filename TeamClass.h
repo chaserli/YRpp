@@ -38,6 +38,9 @@ public:
 	bool AddMember(FootClass* pFoot, bool bForce) 
 		{ JMP_THIS(0x6EA500); }
 
+	void AssignMissionTarget(AbstractClass* pTarget)
+		{ JMP_THIS(0x6E9050); }
+
 	//AbstractClass
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int Size() const R0;
