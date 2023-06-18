@@ -177,6 +177,13 @@ public:
 	static constexpr reference<Matrix3D, 0xB44318> VoxelDefaultMatrix{};
 	static constexpr reference<Matrix3D, 0xB45188, 21> VoxelRampMatrix{};
 
+	static Matrix3D GetIdentity()
+	{
+		Matrix3D mtx { };
+		mtx.MakeIdentity();
+		return mtx;
+	}
+
 	//Properties
 public:
 	union
