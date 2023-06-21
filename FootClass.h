@@ -189,7 +189,7 @@ public:
 	signed char       WaypointIndex; // which waypoint in my planning path am I following?
 	bool              unknown_bool_687;
 	bool              unknown_bool_688;
-	bool              IsTeamLeader;
+	bool              IsInitiated; // Is a fully joined member of a team, used for regroup etc. checks
 	bool              ShouldScanForTarget;
 	bool              unknown_bool_68B;
 	bool              IsDeploying;
