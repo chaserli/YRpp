@@ -115,7 +115,8 @@ public:
 	void EnterAsPassenger(FootClass* pPassenger)
 		{ JMP_THIS(0x4DE630); }
 
-	void ClearSomeVector() // clears 5AC
+	// Clears NavQueue
+	void ClearNavQueue()
 		{ JMP_THIS(0x4DA1C0); }
 
 	// searches cell, sets destination, and returns whether unit is on that cell
@@ -167,7 +168,7 @@ public:
 	AbstractClass*  unknown_5A0;
 	AbstractClass*  Destination; // possibly other objects as well
 	AbstractClass*  LastDestination;
-	DECLARE_PROPERTY(DynamicVectorClass<AbstractClass*>, unknown_abstract_array_5AC);
+	DECLARE_PROPERTY(DynamicVectorClass<AbstractClass*>, NavQueue); // Stores sequence of movement destinations
 	int             unknown_int_5C4;
 	DWORD           unknown_5C8;
 	DWORD           unknown_5CC;
