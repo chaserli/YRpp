@@ -114,6 +114,7 @@ enum class DirType : unsigned char
 	SouthWest = 5 << 5,
 	West = 6 << 5,
 	NorthWest = 7 << 5,
+	Max = 255,
 };
 MAKE_ENUM_FLAGS(DirType);
 
@@ -727,22 +728,14 @@ MAKE_ENUM_FLAGS(AltCellFlags);
 
 enum class FacingType : char
 {
-	N = 0,
-	North = N,
-	NE = 1,
-	NorthEast = NE,
-	E = 2,
-	East = E,
-	SE = 3,
-	SouthEast = SE,
-	S = 4,
-	South = S,
-	SW = 5,
-	SouthWest = SW,
-	W = 6,
-	West = W,
-	NW = 7,
-	NorthWest = NW,
+	North = 0,
+	NorthEast = 1,
+	East = 2,
+	SouthEast = 3,
+	South = 4,
+	SouthWest = 5,
+	West = 6,
+	NorthWest = 7,
 	Count = 8,
 	None = -1,
 };

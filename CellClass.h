@@ -127,7 +127,7 @@ public:
 	void ScatterContent(const CoordStruct &crd, bool ignoreMission, bool ignoreDestination, bool alt)
 		{ JMP_THIS(0x481670); }
 
-	CellClass* GetNeighbourCell(unsigned int direction) const
+	CellClass* GetNeighbourCell(FacingType facing) const
 		{ JMP_THIS(0x481810); }
 
 	// called whenever anything moves, first to remove threat from source cell, second time to add threat to dest cell
