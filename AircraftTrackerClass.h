@@ -10,6 +10,7 @@ class TechnoClass;
 // Tracks aerial units via 20x20 vectors spread across the maps for efficient search
 class AircraftTrackerClass
 {
+public:
 	static constexpr reference<AircraftTrackerClass, 0x887888u> Instance { };
 
 	TechnoClass* Get() { JMP_THIS(0x4137A0) }
