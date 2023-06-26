@@ -121,6 +121,7 @@
 	  <ClInclude Include="$(YRppDir)\AbstractClass.h" />
     <ClInclude Include="$(YRppDir)\AbstractTypeClass.h" />
     <ClInclude Include="$(YRppDir)\AircraftClass.h" />
+    <ClInclude Include="$(YRppDir)\AircraftTrackerClass.h" />
     <ClInclude Include="$(YRppDir)\AircraftTypeClass.h" />
     <ClInclude Include="$(YRppDir)\AirstrikeClass.h" />
     <ClInclude Include="$(YRppDir)\AITriggerTypeClass.h" />
