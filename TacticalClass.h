@@ -51,7 +51,7 @@ public:
 	Point2D * AdjustForZShapeMove(Point2D* pDest, Point2D* pClient)
 		{ JMP_THIS(0x6D1FE0); }
 
-	// convert xyz height to xy height?
+	// in-game height to on-screen height
 	static int __fastcall AdjustForZ(int Height)
 		{ JMP_STD(0x6D20E0); }
 
