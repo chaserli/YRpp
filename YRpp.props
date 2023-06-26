@@ -5,7 +5,7 @@
   </ItemGroup>
   <!-- Header files -->
   <ItemGroup>
-	<!-- Blitters -->
+    <!-- Blitters -->
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlat.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatAlpha.h" />
     <ClInclude Include="$(YRppDir)\Blitters\BlitPlainXlatZRead.h" />
@@ -102,12 +102,12 @@
     <ClInclude Include="$(YRppDir)\Blitters\RLEBlitTransZRemapXlatAlphaZReadWrite.h" />
     <ClInclude Include="$(YRppDir)\Blitters\RLEBlitTransZRemapXlatZRead.h" />
     <ClInclude Include="$(YRppDir)\Blitters\RLEBlitTransZRemapXlatZReadWrite.h" />
-	<!-- FileFormats -->
-	<ClInclude Include="$(YRppDir)\FileFormats\HVA.h" />
+    <!-- FileFormats -->
+    <ClInclude Include="$(YRppDir)\FileFormats\HVA.h" />
     <ClInclude Include="$(YRppDir)\FileFormats\SHP.h" />
     <ClInclude Include="$(YRppDir)\FileFormats\VXL.h" />
     <ClInclude Include="$(YRppDir)\FileFormats\_Loader.h" />
-	<!-- Helpers -->
+    <!-- Helpers -->
     <ClInclude Include="$(YRppDir)\Helpers\Cast.h" />
     <ClInclude Include="$(YRppDir)\Helpers\CompileTime.h" />
     <ClInclude Include="$(YRppDir)\Helpers\Enumerators.h" />
@@ -117,8 +117,8 @@
     <ClInclude Include="$(YRppDir)\Helpers\String.h" />
     <ClInclude Include="$(YRppDir)\Helpers\Template.h" />
     <ClInclude Include="$(YRppDir)\Helpers\VTable.h" />
-	<!-- Root -->
-	  <ClInclude Include="$(YRppDir)\AbstractClass.h" />
+    <!-- Root -->
+    <ClInclude Include="$(YRppDir)\AbstractClass.h" />
     <ClInclude Include="$(YRppDir)\AbstractTypeClass.h" />
     <ClInclude Include="$(YRppDir)\AircraftClass.h" />
     <ClInclude Include="$(YRppDir)\AircraftTrackerClass.h" />
