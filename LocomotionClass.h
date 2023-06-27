@@ -32,7 +32,7 @@ public:
 	virtual ULONG __stdcall Release() { JMP_STD(0x55A970); }
 
 	//IPersist
-	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) { JMP_STD(0x4C9150); }
+	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) = 0;
 
 	//IPersistStream
 	virtual HRESULT __stdcall IsDirty() { JMP_STD(0x4B4C30); }
@@ -41,8 +41,8 @@ public:
 
 	virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize) { JMP_STD(0x55AB40); }
 
-	virtual ~LocomotionClass() { JMP_THIS(0x5172F0); } // should be SDDTOR in fact
-	virtual int Size() { JMP_THIS(0x4C9150); }
+	virtual ~LocomotionClass() = default;
+	virtual int Size() = 0;
 
 	// ILocomotion
 	// virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) { JMP_STD(0x4D0510); }
@@ -74,7 +74,7 @@ public:
 	virtual bool __stdcall Push(DirStruct dir) { JMP_STD(0x55AB70); }
 	virtual bool __stdcall Shove(DirStruct dir) { JMP_STD(0x55AB80); }
 	virtual void __stdcall Force_Track(int track, CoordStruct coord) { JMP_STD(0x55AC10); }
-	virtual Layer __stdcall In_Which_Layer() { JMP_STD(0x4C9150); }
+	virtual Layer __stdcall In_Which_Layer() = 0;
 	virtual void __stdcall Force_Immediate_Destination(CoordStruct coord) { JMP_STD(0x55AC00); }
 	virtual void __stdcall Force_New_Slope(int ramp) { JMP_STD(0x55ACE0); }
 	virtual bool __stdcall Is_Moving_Now() { JMP_STD(0x4B6610); }
