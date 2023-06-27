@@ -41,8 +41,8 @@ public:
 
 	virtual HRESULT __stdcall GetSizeMax(ULARGE_INTEGER* pcbSize) { JMP_STD(0x55AB40); }
 
-	virtual ~LocomotionClass() { JMP_STD(0x5172F0); } // should be SDDTOR in fact
-	virtual int Size() { JMP_STD(0x4C9150); }
+	virtual ~LocomotionClass() { JMP_THIS(0x5172F0); } // should be SDDTOR in fact
+	virtual int Size() { JMP_THIS(0x4C9150); }
 
 	// ILocomotion
 	// virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) { JMP_STD(0x4D0510); }
