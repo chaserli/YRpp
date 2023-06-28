@@ -165,6 +165,12 @@ public:
 	bool Exists(const char* pSection, const char* pKey)
 		{ JMP_THIS(0x679F40); }
 
+	int ReadTime(const char* pSection, const char* pKey, int nDefault)
+		{ JMP_THIS(0x52A760); }
+
+	bool WriteTime(const char* pSection, const char* pKey, int nValue)
+		{ JMP_THIS(0x52A940); }
+
 	// C&C helpers
 
 #define INI_READ(item, addr) \
