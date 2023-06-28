@@ -132,6 +132,9 @@ public:
 	static void InitRandom()
 		{ JMP_STD(0x52FC20); }
 
+	static void ShowSpecialDialog()
+		{ JMP_STD(0x48C8B0); }
+
 	static void InitUIStuff()
 	{
 		CALL(0x600560); // InitCommonDialogStuff()

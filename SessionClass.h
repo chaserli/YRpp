@@ -86,6 +86,9 @@ public:
 	bool CreateConnections()
 		{ JMP_THIS(0x697B70) }
 
+	void Resume()
+		{ JMP_THIS(0x69BAB0) }
+
 	GameMode GameMode;
 	MPGameModeClass* MPGameMode;
 	DWORD unknown_08;
