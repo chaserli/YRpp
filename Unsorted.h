@@ -44,6 +44,7 @@ public:
 	static constexpr reference<bool, 0xAC10C8u> const ObserverMode{};
 	static constexpr reference<char, 0xA8B8E0u> const ScenarioName{};
 	static constexpr reference<bool, 0xA8F7ACu> const DontSetExceptionHandler{};
+	static constexpr reference<bool, 0xB04880u> const EnableMPSyncDebug{};
 
 	static struct Network
 	{
