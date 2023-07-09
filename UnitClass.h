@@ -33,6 +33,16 @@ public:
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int Size() const R0;
 
+	//ObjectClass
+
+	virtual Action MouseOverCell(CellStruct const* pCell, bool checkFog = false, bool ignoreForce = false) const override { JMP_THIS(0x7404B0) };
+	virtual Action MouseOverObject(ObjectClass const* pObject, bool ignoreForce = false) const override { JMP_THIS(0x73FD50) };
+
+	virtual void MarkAllOccupationBits(const CoordStruct& coords) override { JMP_THIS(0x7441B0) };
+	virtual void UnmarkAllOccupationBits(const CoordStruct& coords) override { JMP_THIS(0x744210) };
+	// ...and so on
+	// FIXME other virtual function explicit addresses
+
 	//UnitClass
 	// main drawing functions - Draw() calles one of these, they call parent's Draw_A_smth
 	virtual void DrawAsVXL(Point2D Coords, RectangleStruct BoundingRect, int Brightness, int Tint)

@@ -44,6 +44,10 @@ public:
 	virtual ~ObjectClass() RX;
 
 	//AbstractClass
+	virtual bool IsOnFloor() const override { JMP_THIS(0x5F6B60); }
+	virtual bool IsInAir() const override { JMP_THIS(0x5F6B90); }
+	// ...and so on
+	// FIXME other virtual function explicit addresses
 
 	//ObjectClass
 	virtual void AnimPointerExpired(AnimClass* pAnim) RX;
@@ -53,7 +57,7 @@ public:
 	virtual Action MouseOverCell(CellStruct const* pCell, bool checkFog = false, bool ignoreForce = false) const RT(Action);
 	virtual Action MouseOverObject(ObjectClass const* pObject, bool ignoreForce = false) const RT(Action);
 	virtual Layer InWhichLayer() const RT(Layer);
-	virtual bool IsSurfaced() R0; // opposed to being submerged
+	virtual bool IsSurfaced() { JMP_THIS(0x5F6C10); } // opposed to being submerged
 
  /*
   	Building returns if it is 1x1 and has UndeploysInto
@@ -94,10 +98,10 @@ public:
 	virtual CoordStruct* GetTargetCoords(CoordStruct* pCrd) const R0;
 	// gets a building's free dock coordinates for a unit. falls back to this->GetCoords(pCrd);
 	virtual CoordStruct* GetDockCoords(CoordStruct* pCrd, TechnoClass* docker) const R0;
-	virtual CoordStruct* GetRenderCoords(CoordStruct* pCrd) const R0;
+	virtual CoordStruct* GetRenderCoords(CoordStruct* pCrd) const { JMP_THIS(0x41BE00); }
 	virtual CoordStruct* GetFLH(CoordStruct *pDest, int idxWeapon, CoordStruct BaseCoords) const R0;
 	virtual CoordStruct* GetExitCoords(CoordStruct* pCrd, DWORD dwUnk) const R0;
-	virtual int GetYSort() const R0;
+	virtual int GetYSort() const { JMP_THIS(0x5F6BD0); }
 	virtual bool IsOnBridge(TechnoClass* pDocker = nullptr) const R0; // pDocker is passed to GetDestination
 	virtual bool IsStandingStill() const R0;
 	virtual bool IsDisguised() const R0;
@@ -229,9 +233,6 @@ public:
 
 	int GetCellLevel() const
 		{ JMP_THIS(0x5F5F00); }
-
-	int Get_YSort() const
-		{ JMP_THIS(0x5F6BD0); }
 
 	CellStruct GetMapCoords() const {
 		CellStruct ret;
