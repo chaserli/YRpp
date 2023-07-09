@@ -16,6 +16,7 @@ namespace Unsorted
 	// 256 * sqrt(2/3)
 
 	// The height in the middle of a cell, which is therefore CellHeight/2
+	// see ABC5E8, AC13C8
 	constexpr int LevelHeight = 104;
 	// The game actually calculated this one and multiply it by 2 for CellHeight
 	// cot(deg2rad(60)) * leptonsOfCellDiagonal /2

@@ -295,8 +295,9 @@ ILocomotion : IUnknown
 	// Falsifies the IsReallyMoving flag in WalkLocomotionClass.
 	virtual void __stdcall Stop_Movement_Animation() = 0;
 
-	// Unknown, must have been added after LOCOS.TLB was generated. -pd
-	virtual void __stdcall Clear_Coords() = 0;
+	// Object is disappearing from the world.
+	// Was added post TLB generation.
+	virtual void __stdcall Limbo() = 0;
 
 	// Locks the locomotor from being deleted.
 	virtual void __stdcall Lock() = 0;

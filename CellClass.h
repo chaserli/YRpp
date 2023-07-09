@@ -29,9 +29,11 @@ class NOVTABLE CellClass : public AbstractClass
 public:
 	static const AbstractType AbsID = AbstractType::Cell;
 
+	static constexpr int BridgeLevels = 4;
+
 	// the height of a bridge in leptons
-	static const int BridgeLevels = 4;
-	static const int BridgeHeight = BridgeLevels * Unsorted::LevelHeight;
+	// see ABC5DC, AC13BC
+	static constexpr int BridgeHeight = BridgeLevels * Unsorted::LevelHeight;
 
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
@@ -250,8 +252,8 @@ public:
 
 	// helper
 	bool ContainsBridge() const
-	{ 
-		return static_cast<bool>(this->Flags & CellFlags::BridgeHead); 
+	{
+		return static_cast<bool>(this->Flags & CellFlags::BridgeHead);
 	}
 	bool ContainsBridgeEx() const
 	{
@@ -310,23 +312,24 @@ public:
 
 	CoordStruct FixHeight(CoordStruct crd) const
 	{
-		if(this->ContainsBridge()) {
+		if (this->ContainsBridge())
 			crd.Z += BridgeHeight;
-		}
+
 		return crd;
 	}
 
 	// helper - gets coords and fixes height for bridge
 	CoordStruct GetCoordsWithBridge() const
 	{
-		CoordStruct buffer =  this->GetCoords();
+		CoordStruct buffer = this->GetCoords();
 		return FixHeight(buffer);
 	}
 
 	void MarkForRedraw()
 		{ JMP_THIS(0x486E70); }
 
-	void ChainReaction() {
+	void ChainReaction()
+	{
 		CellStruct* cell = &this->MapCoords;
 		SET_REG32(ecx, cell);
 		CALL(0x489270);
@@ -335,7 +338,8 @@ public:
 	CoordStruct* FindInfantrySubposition(CoordStruct* pOutBuffer, const CoordStruct& coords, bool ignoreContents, bool alt, bool useCellCoords)
 		{ JMP_THIS(0x481180); }
 
-	CoordStruct FindInfantrySubposition(const CoordStruct& coords, bool ignoreContents, bool alt, bool useCellCoords) {
+	CoordStruct FindInfantrySubposition(const CoordStruct& coords, bool ignoreContents, bool alt, bool useCellCoords)
+	{
 		CoordStruct outBuffer;
 		this->FindInfantrySubposition(&outBuffer, coords, ignoreContents, alt, useCellCoords);
 		return outBuffer;

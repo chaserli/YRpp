@@ -89,7 +89,7 @@ public:
 	virtual bool __stdcall Will_Jump_Tracks() { JMP_STD(0x4B6640); }
 	virtual bool __stdcall Is_Really_Moving_Now() { JMP_STD(0x4B4C50); }
 	virtual void __stdcall Stop_Movement_Animation() { JMP_STD(0x4B4C90); }
-	virtual void __stdcall Clear_Coords() { JMP_STD(0x4B4CA0); }
+	virtual void __stdcall Limbo() { JMP_STD(0x4B4CA0); }
 	virtual void __stdcall Lock() { JMP_STD(0x4B6650); }
 	virtual void __stdcall Unlock() { JMP_STD(0x4B6660); }
 	virtual int __stdcall Get_Track_Number() { JMP_STD(0x4B6670); }
