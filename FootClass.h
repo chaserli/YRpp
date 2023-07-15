@@ -143,10 +143,8 @@ protected:
 public:
 
 	int             PlanningPathIdx; // which planning path am I following?
-	short           unknown_short_524;
-	short           unknown_short_526;
-	short           unknown_short_528;
-	short           unknown_short_52A;
+	CellStruct      WaypointNearbyAccessibleCellDelta; // add to WaypointCell to get Nearby_Cell for this foot
+	CellStruct      WaypointCell; // current waypoint cell
 	DWORD           unknown_52C;	//unused?
 	DWORD           unknown_530;
 	DWORD           unknown_534;
@@ -218,3 +216,5 @@ public:
 	bool              unknown_bool_6B8;
 	PROTECTED_PROPERTY(DWORD,   unused_6BC);	//???
 };
+
+static_assert(sizeof(FootClass) == 0x6C0);
