@@ -209,8 +209,8 @@ public:
 	virtual int SelectNavalTargeting(AbstractClass *pTarget) const R0;
 	virtual int GetZAdjustment() const R0;
 	virtual ZGradient GetZGradient() const RT(ZGradient);
-	virtual CellStruct* GetSomeCellStruct(CellStruct* buffer) const R0;
-	virtual void SetSomeCellStruct(CellStruct coord) RX;
+	virtual CellStruct GetLastFlightMapCoords() const RT(CellStruct);
+	virtual void SetLastFlightMapCoords(CellStruct coord) RX;
 	virtual CellStruct* vt_entry_2FC(CellStruct* Buffer, DWORD dwUnk2, DWORD dwUnk3) const R0;
 	virtual CoordStruct * vt_entry_300(CoordStruct * Buffer, DWORD dwUnk2) const R0;
 	virtual DWORD vt_entry_304(DWORD dwUnk, DWORD dwUnk2) const R0;
