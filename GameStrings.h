@@ -52,6 +52,8 @@ namespace GameStrings
 	GAMEMD_STRING(EVA_StructureSold      , 0x819030u);
 	GAMEMD_STRING(EVA_UnitSold           , 0x822630u);
 	GAMEMD_STRING(EVA_OreMinerUnderAttack, 0x824784u);
+	GAMEMD_STRING(EVA_CannotDeployHere   , 0x82012Cu);
+	GAMEMD_STRING(EVA_UnitReady          , 0x8249A0u);
 
 	// CSF Labels
 	GAMEMD_STRING(TXT_TO_REPLAY        , 0x83DB24);
