@@ -52,6 +52,9 @@ public:
 	static ColorScheme * __fastcall FindByName(const char* pID, const ColorStruct &BaseColor, const BytePalette &Pal1, const BytePalette &Pal2, int ShadeCount)
 		{ JMP_THIS(0x68C9C0); }
 
+	static DynamicVectorClass<ColorScheme*>* __fastcall GeneratePalette(char* name)
+		{ JMP_STD(0x6263D0); }
+
 	//Constructor, Destructor
 	ColorScheme(const char* pID, const ColorStruct &BaseColor, const BytePalette &Pal1, const BytePalette &Pal2, int ShadeCount, bool AddToArray)
 		{ JMP_THIS(0x68C710); }
