@@ -50,6 +50,7 @@ namespace GameStrings
 
 	// EVA entry names
 	GAMEMD_STRING(EVA_StructureSold      , 0x819030u);
+	GAMEMD_STRING(EVA_InsufficientFunds  , 0x819044u);
 	GAMEMD_STRING(EVA_UnitSold           , 0x822630u);
 	GAMEMD_STRING(EVA_OreMinerUnderAttack, 0x824784u);
 	GAMEMD_STRING(EVA_CannotDeployHere   , 0x82012Cu);
