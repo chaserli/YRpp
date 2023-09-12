@@ -298,7 +298,7 @@ public:
 	template <size_t Size>
 	constexpr int ReadUnicodeString(const char* pSection, const char* pKey, const wchar_t* pDefault, wchar_t(&pBuffer)[Size])
 	{
-		this->ReadUnicodeString(pSection, pKey, pDefault, Size);
+		return this->ReadUnicodeString(pSection, pKey, pDefault, pBuffer, Size);
 	}
 
 

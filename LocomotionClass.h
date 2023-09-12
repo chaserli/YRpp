@@ -187,7 +187,7 @@ std::is_same_v<std::remove_reference_t<decltype(T::ClassGUID.get())>, CLSID cons
 template <typename T>
 __forceinline T locomotion_cast(ILocomotion* iLoco)
 {
-	// TODO concepts
+
 	using Base = std::remove_cvref_t<std::remove_const_t<std::remove_pointer_t<T>>>;
 	static_assert(std::is_base_of_v<LocomotionClass, Base> && !std::is_same_v<LocomotionClass, Base>,
 		"T needs to point to a class derived from LocomotionClass");
@@ -202,13 +202,13 @@ __forceinline T locomotion_cast(ILocomotion* iLoco)
 			static_cast<T>(iLoco) : nullptr;
 	}
 	else
-		static_assert(false, "Cannot Use locomotion_cast here yet");
+		static_assert(sizeof(Base) < 0, "Cannot Use locomotion_cast here yet");
 }
 
 template<typename T>
 __forceinline T locomotion_cast(ILocomotionPtr& comLoco)
 {
-	// TODO concepts
+
 	using Base = std::remove_const_t<std::remove_pointer_t<T>>;
 	static_assert(std::is_base_of<LocomotionClass, Base>::value,
 		"locomotion_cast: T is required to be a sub-class of LocomotionClass.");

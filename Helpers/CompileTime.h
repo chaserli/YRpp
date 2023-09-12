@@ -1,8 +1,6 @@
 #pragma once
 
-#include <type_traits>
-
-struct noinit_t;
+#include <concepts>
 
 // defines a compile time pointer to a known memory address
 template <typename T, unsigned int Address>
@@ -11,9 +9,6 @@ struct constant_ptr {
 
 	constexpr constant_ptr() noexcept = default;
 	constant_ptr(constant_ptr&) = delete;
-private:
-	// mere presence "fixes" C2100: illegal indirection
-	constexpr constant_ptr(noinit_t) noexcept {}
 public:
 
 	value_type get() const noexcept {
@@ -46,9 +41,6 @@ struct reference {
 
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
-private:
-	// mere presence "fixes" C2100: illegal indirection
-	constexpr reference(noinit_t) noexcept {}
 public:
 
 	value_type& get() const noexcept {
@@ -101,17 +93,15 @@ struct reference<T, Address, 0> {
 
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
-private:
-	// mere presence "fixes" C2100: illegal indirection
-	constexpr reference(noinit_t) noexcept {}
 public:
 
 	value_type& get() const noexcept {
 		return *reinterpret_cast<value_type*>(Address);
 	}
 
-	template <typename T2, typename = std::enable_if_t<std::is_assignable<T&, T2>::value>>
-	T& operator=(T2&& rhs) const {
+	template <typename T2>	requires std::assignable_from<T&,T2>
+		T& operator=(T2&& rhs) const
+	{
 		return get() = std::forward<T2>(rhs);
 	}
 
@@ -128,7 +118,10 @@ public:
 	}
 
 	decltype(auto) operator->() const noexcept {
-		return arrow(std::is_pointer<T>::type());
+		if constexpr (std::is_pointer_v<T>)
+			return get();
+		else
+			return &get();
 	}
 
 	decltype(auto) operator*() const noexcept {
@@ -137,14 +130,5 @@ public:
 
 	decltype(auto) operator[](int index) const noexcept {
 		return get()[index];
-	}
-
-private:
-	auto arrow(std::false_type) const noexcept {
-		return &get();
-	}
-
-	auto arrow(std::true_type) const noexcept {
-		return get();
 	}
 };

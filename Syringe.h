@@ -215,6 +215,17 @@ public:
 	}
 };
 
+//TODO: Move to CMakeLists.txt
+#ifdef __clang__
+#pragma clang diagnostic push
+
+#pragma clang diagnostic ignored "-Wunused-variable"
+#pragma clang diagnostic ignored "-Wunused-parameter"
+#pragma clang diagnostic ignored "-Wunused-value"
+//...
+//#pragma clang diagnostic pop
+#endif
+
 //Use this for DLL export functions
 //e.g. EXPORT FunctionName(REGISTERS* R)
 #define EXPORT extern "C" __declspec(dllexport) DWORD __cdecl
@@ -267,10 +278,10 @@ namespace SyringeData {
 };
 
 #define declhost(exename, checksum) \
-namespace SyringeData { namespace Hosts { __declspec(allocate(".syexe00")) hostdecl _hst__ ## exename = { checksum, #exename }; }; };
+namespace SyringeData { namespace Hosts { __declspec(allocate(".syexe00")) hostdecl _hst__ ## exename  { checksum, #exename }; }; };
 
 #define declhook(hook, funcname, size) \
-namespace SyringeData { namespace Hooks { __declspec(allocate(".syhks00")) hookdecl _hk__ ## hook ## funcname = { ## hook, ## size, #funcname }; }; };
+namespace SyringeData { namespace Hooks { __declspec(allocate(".syhks00")) hookdecl _hk__ ## hook ## funcname  {  hook, size, #funcname }; }; };
 
 #endif // SYR_VER == 2
 
