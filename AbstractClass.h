@@ -139,6 +139,16 @@ public:
 		return ret;
 	}
 
+	DirStruct* GetTargetDirection(DirStruct* pDir, AbstractClass* pTarget) const
+		{ JMP_THIS(0x5F3DB0); }
+
+	DirStruct GetTargetDirection(AbstractClass* pTarget) const
+	{
+		DirStruct ret;
+		this->GetTargetDirection(&ret, pTarget);
+		return ret;
+	}
+
 	//Operators
 	bool operator < (const AbstractClass &rhs) const {
 		return this->UniqueID < rhs.UniqueID;
