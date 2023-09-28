@@ -197,9 +197,9 @@ public:
 	virtual int GetPipFillLevel() const R0;
 	virtual int GetRefund() const R0;
 	virtual int GetThreatValue() const R0;
-	virtual bool vt_entry_2C4(DWORD dwUnk) R0;
+	virtual bool IsInSameZoneAs(const AbstractClass* pTarget) R0; // Is the target reachable?
 	virtual DWORD vt_entry_2C8(DWORD dwUnk, DWORD dwUnk2) R0;
-	virtual bool CanReachLocation(const CoordStruct& coord) R0;
+	virtual bool IsInSameZoneAs(const CoordStruct* coord) R0;     // Are the coords reachable?
 	virtual int GetCrewCount() const R0;
 	virtual int GetAntiAirValue() const R0;
 	virtual int GetAntiArmorValue() const R0;
