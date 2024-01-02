@@ -72,9 +72,11 @@ public:
 	void UpdateAnimations()
 		{ JMP_THIS(0x4509D0); }
 
-	int GetCurrentFrame() { JMP_THIS(0x43EF90); }
+	int GetCurrentFrame()
+		{ JMP_THIS(0x43EF90); }
 
-	bool IsAllFogged() const { JMP_THIS(0x457A10); }
+	bool IsAllFogged() const
+		{ JMP_THIS(0x457A10); }
 
 	void SetRallypoint(CellStruct* pTarget, bool bPlayEVA)
 		{ JMP_THIS(0x443860); }
