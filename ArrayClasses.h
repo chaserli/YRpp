@@ -25,7 +25,7 @@ public:
 			if(pMem) {
 				this->Items = pMem;
 			} else {
-				this->Items = GameCreateArray<T>(static_cast<size_t>(capacity));
+				this->Items = DLLCreateArray<T>(static_cast<size_t>(capacity));
 				this->IsAllocated = true;
 			}
 		}
@@ -33,7 +33,7 @@ public:
 
 	VectorClass(const VectorClass &other) {
 		if(other.Capacity > 0) {
-			this->Items = GameCreateArray<T>(static_cast<size_t>(other.Capacity));
+			this->Items = DLLCreateArray<T>(static_cast<size_t>(other.Capacity));
 			this->IsAllocated = true;
 			this->Capacity = other.Capacity;
 			for(auto i = 0; i < other.Capacity; ++i) {
@@ -51,7 +51,7 @@ public:
 
 	virtual ~VectorClass() noexcept {
 		if(this->IsAllocated) {
-			GameDeleteArray(this->Items, static_cast<size_t>(this->Capacity));
+			DLLDeleteArray(this->Items, static_cast<size_t>(this->Capacity));
 		}
 	}
 
@@ -90,7 +90,7 @@ public:
 
 			bool bMustAllocate = (pMem == nullptr);
 			if(!pMem) {
-				pMem = GameCreateArray<T>(static_cast<size_t>(capacity));
+				pMem = DLLCreateArray<T>(static_cast<size_t>(capacity));
 			}
 
 			this->IsInitialized = true;
@@ -106,7 +106,7 @@ public:
 				}
 
 				if(this->IsAllocated) {
-					GameDeleteArray(this->Items, static_cast<size_t>(this->Capacity));
+					DLLDeleteArray(this->Items, static_cast<size_t>(this->Capacity));
 					this->Items = nullptr;
 				}
 			}
@@ -202,7 +202,7 @@ public:
 
 	DynamicVectorClass(const DynamicVectorClass &other) {
 		if(other.Capacity > 0) {
-			this->Items = GameCreateArray<T>(static_cast<size_t>(other.Capacity));
+			this->Items = DLLCreateArray<T>(static_cast<size_t>(other.Capacity));
 			this->IsAllocated = true;
 			this->Capacity = other.Capacity;
 			this->Count = other.Count;

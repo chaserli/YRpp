@@ -64,9 +64,9 @@ public:
 	int ROF;
 	int Range; // int(256 * ini value)
 	int MinimumRange; // int(256 * ini value)
-	TypeList<int> Report;		//sound indices
-	TypeList<int> DownReport;	//sound indices
-	TypeList<AnimTypeClass*> Anim;
+	DECLARE_PROPERTY(TypeList<int>, Report);		//sound indices
+	DECLARE_PROPERTY(TypeList<int>, DownReport);	//sound indices
+	DECLARE_PROPERTY(TypeList<AnimTypeClass*>, Anim);
 	AnimTypeClass* OccupantAnim;
 	AnimTypeClass* AssaultAnim;
 	AnimTypeClass* OpenToppedAnim;

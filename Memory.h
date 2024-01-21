@@ -211,7 +211,7 @@ requires std::constructible_from<T, TArgs...>
 static inline T* DLLCreateArray(size_t capacity, TArgs&&... args)
 {
 	std::allocator<T> alloc;
-	return Memory::CreateArray<T>(alloc, capacity, std::forward<TArgs>(args));
+	return Memory::CreateArray<T>(alloc, capacity, std::forward<TArgs>(args)...);
 }
 
 template<typename T>

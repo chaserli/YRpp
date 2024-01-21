@@ -53,7 +53,7 @@ public:
 
 	ParticleSystemTypeClass* Type;
 	CoordStruct  SpawnDistanceToOwner;
-	DynamicVectorClass<ParticleClass*> Particles;
+	DECLARE_PROPERTY(DynamicVectorClass<ParticleClass*>, Particles);
 	CoordStruct TargetCoords;
 	ObjectClass* Owner;
 	AbstractClass* Target; // CellClass or TechnoClass
