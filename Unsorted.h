@@ -150,6 +150,18 @@ public:
 
 	static void __fastcall DrawRadialIndicator(bool drawLine, bool adjustColor, const CoordStruct pCoord, ColorStruct color, float lineMultiplier, bool unknown1, bool unknown2)
 		{ JMP_STD(0x456980); }
+
+	static void __fastcall PlayMovie(
+		const char* movieName,
+		int queue_theme = -1,
+		char use_hidden_surface1 = -1,
+		char stretch_movie = -1,
+		char use_hidden_surface2 = -1,
+		char set_state_1 = -1
+	)
+	{
+		JMP_STD(0x5BED40);
+	}
 };
 
 // this fake class contains the IIDs used by the game
