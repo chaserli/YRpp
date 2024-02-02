@@ -140,12 +140,12 @@ public:
 	{
 		CALL(0x600560); // InitCommonDialogStuff()
 
-		if (PCXInitialized)
-			return;
-
-		PCXInitialized = true;
-		CALL(0x61F190); // InitUIColorShifts()
-		CALL(0x61F210); // LoadPCXFiles()
+		if (!PCXInitialized)
+		{
+			PCXInitialized = true;
+			CALL(0x61F190); // InitUIColorShifts()
+			CALL(0x61F210); // LoadPCXFiles()
+		}
 	}
 
 	static void __fastcall DrawRadialIndicator(bool drawLine, bool adjustColor, const CoordStruct pCoord, ColorStruct color, float lineMultiplier, bool unknown1, bool unknown2)
