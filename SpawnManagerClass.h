@@ -1,9 +1,6 @@
 #pragma once
 
-#include <AbstractClass.h>
-
-class HouseClass;
-class TechnoClass;
+#include <AircraftClass.h>
 
 enum class SpawnManagerStatus : unsigned int {
 	Idle = 0, // no target or out of range
@@ -22,9 +19,9 @@ enum class SpawnNodeStatus : unsigned int {
 	Dead = 7 // respawning
 };
 
-struct SpawnNode
+struct SpawnControl
 {
-	TechnoClass* Unit;
+	AircraftClass* Unit;
 	SpawnNodeStatus Status;
 	CDTimerClass SpawnTimer;
 	BOOL IsSpawnMissile;
@@ -99,7 +96,7 @@ public:
 	int SpawnCount;
 	int RegenRate;
 	int ReloadRate;
-	DynamicVectorClass<SpawnNode*> SpawnedNodes;
+	DynamicVectorClass<SpawnControl*> SpawnedNodes;
 	CDTimerClass UpdateTimer;
 	CDTimerClass SpawnTimer;
 	AbstractClass* Target;

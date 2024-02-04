@@ -167,6 +167,7 @@
     <ClInclude Include="$(YRppDir)\DisplayClass.h" />
     <ClInclude Include="$(YRppDir)\Drawing.h" />
     <ClInclude Include="$(YRppDir)\DriveLocomotionClass.h" />
+    <ClInclude Include="$(YRppDir)\DropPodLocomotionClass.h" />
     <ClInclude Include="$(YRppDir)\DropListClass.h" />
     <ClInclude Include="$(YRppDir)\EBolt.h" />
     <ClInclude Include="$(YRppDir)\EditClass.h" />
