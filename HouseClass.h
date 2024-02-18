@@ -216,16 +216,33 @@ public:
 	virtual int	Size() const R0;
 
 	bool IsAlliedWith(int idxHouse) const
-		{ JMP_THIS(0x4F9A10); }
+		//{ JMP_THIS(0x4F9A10); }
+	{
+		if (idxHouse == this->ArrayIndex) return true;
+		if (idxHouse == -1)return false;
+		return this->Allies.Contains(idxHouse);
+	}
 
 	bool IsAlliedWith(HouseClass const* pHouse) const
-		{ JMP_THIS(0x4F9A50); }
+		//{ JMP_THIS(0x4F9A50); }
+	{
+		if (!this || !pHouse || pHouse->ArrayIndex == -1) return false;
+		if (this == pHouse || this->ArrayIndex == pHouse->ArrayIndex) return true;
+
+		return this->Allies.Contains(pHouse->ArrayIndex);
+	}
 
 	bool IsAlliedWith(ObjectClass const* pObject) const
-		{ JMP_THIS(0x4F9A90); }
+		//	{ JMP_THIS(0x4F9A90); }
+	{
+		return pObject && this->IsAlliedWith(pObject->GetOwningHouse());
+	}
 
 	bool IsAlliedWith(AbstractClass const* pAbstract) const
-		{ JMP_THIS(0x4F9AF0); }
+		//	{ JMP_THIS(0x4F9AF0); }
+	{
+		return this->IsAlliedWith(generic_cast<ObjectClass const*>(pAbstract));
+	}
 
 	void MakeAlly(int iHouse, bool bAnnounce)
 		{ JMP_THIS(0x4F9B50); }
