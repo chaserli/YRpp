@@ -505,6 +505,19 @@ public:
 	void BuildingToWall(CellStruct const& cell, HouseClass* pHouse, BuildingTypeClass* pBldType)
 		{ JMP_THIS(0x588750); }
 
+	// Called on wall state updates etc. when the wall hasn't been removed.
+	void RecalculateZones(CellStruct const& cell)
+		{ JMP_THIS(0x56D5A0);}
+
+	// Called on wall state updates etc. when the wall HAS been removed.
+	void ResetZones(CellStruct const& cell)
+	{ JMP_THIS(0x56D460); }
+
+	// Called on wall state updates etc
+	void RecalculateSubZones(CellStruct const& cell)
+	{ JMP_THIS(0x584550); }
+
+
 protected:
 	//Constructor
 	MapClass() {}	//don't need this

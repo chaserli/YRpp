@@ -115,8 +115,10 @@ public:
 	void SetupLAT()
 		{ JMP_THIS(0x47CA80); }
 
-	// checks for nearby cliff impassability, calls SetupLAT(), sets up TubeClass if tunnel, cell anim if attached, etc
-	void Setup(DWORD dwUnk)
+	// Recalculates cell attributes.
+	// Checks for nearby cliff impassability, calls SetupLAT(), sets up TubeClass if tunnel, cell anim if attached etc.
+	// Set cellLevel to -1 if you wish to not change it.
+	void RecalcAttributes(int cellLevel)
 		{ JMP_THIS(0x47D2B0); }
 
 	void BlowUpBridge()
