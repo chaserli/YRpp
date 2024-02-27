@@ -220,7 +220,6 @@
     <ClInclude Include="$(YRppDir)\MapSeedClass.h" />
     <ClInclude Include="$(YRppDir)\Matrix3D.h" />
     <ClInclude Include="$(YRppDir)\Memory.h" />
-    <ClInclude Include="$(YRppDir)\MessageBox.h" />
     <ClInclude Include="$(YRppDir)\MessageListClass.h" />
     <ClInclude Include="$(YRppDir)\MissionClass.h" />
     <ClInclude Include="$(YRppDir)\MixFileClass.h" />

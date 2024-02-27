@@ -10,7 +10,6 @@
 #include <YRPPCore.h>
 #include <FileSystem.h>
 #include <StringTable.h>
-#include <MessageBox.h>
 #include <Drawing.h>
 #include <PCX.h>
 #include <CommandClass.h>
