@@ -41,11 +41,6 @@ public:
 	float Unknown;
 };
 
-struct TransformMatrix {
-public:
-	TransformVector Vectors[3];
-};
-
 // file header
 struct VoxFileHeader {
 public:
@@ -77,7 +72,7 @@ public:
 	int span_end_off;
 	int span_data_off;
 	float DetFloat;
-	TransformMatrix TransformationMatrix;
+	Matrix3D TransformationMatrix;
 	Vector3D<float> MinBounds;
 	Vector3D<float> MaxBounds;
 	char size_X;
@@ -92,29 +87,8 @@ struct VoxelSectionTailer {
 	int span_end_off;
 	int span_data_off;
 	float HVAMultiplier;
-	TransformMatrix TransformationMatrix;
-	Vector3D<float> MinBounds;
-	int MaxBounds;
-	int field_50;
-	int field_54;
-	int field_58;
-	int field_5C;
-	int field_60;
-	int field_64;
-	int field_68;
-	int field_6C;
-	int field_70;
-	int field_74;
-	int field_78;
-	int field_7C;
-	int field_80;
-	int field_84;
-	int field_88;
-	int field_8C;
-	int field_90;
-	int field_94;
-	int field_98;
-	int field_9C;
+	Matrix3D TransformationMatrix;
+	Vector3D<float> Bounds[8];
 	char size_X;
 	char size_Y;
 	char size_Z;

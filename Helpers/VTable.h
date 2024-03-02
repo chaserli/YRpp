@@ -7,7 +7,7 @@
 namespace VTable
 {
 	template<typename T>
-	constexpr void Set(const T ptr, uintptr_t addr)
+	__forceinline void Set(const T ptr, uintptr_t addr)
 	{
 		static_assert(std::is_pointer<T>::value, "T must be a pointer");
 
@@ -15,7 +15,7 @@ namespace VTable
 	}
 
 	template<typename T>
-	constexpr uintptr_t Get(const T ptr)
+	__forceinline uintptr_t Get(const T ptr)
 	{
 		static_assert(std::is_pointer<T>::value, "T must be a pointer");
 

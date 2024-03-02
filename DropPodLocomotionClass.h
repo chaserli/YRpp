@@ -4,6 +4,7 @@
 class NOVTABLE DropPodLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
+	static constexpr uintptr_t ILocoVTable = 0x7E8278;
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;
 	virtual ULONG __stdcall AddRef() R0;

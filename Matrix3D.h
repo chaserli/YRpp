@@ -54,16 +54,16 @@ public:
 		// JMP_THIS(0x5AE690);
 	}
 
-	// some other rotation ctor?
+	// Terrain ramp
 	Matrix3D(float rotate_z, float rotate_x) { JMP_THIS(0x5AE6F0); }
 
-	// rotation ctor
+	// rotation along axis
 	Matrix3D(Vector3D<float>* axis, float angle) { JMP_THIS(0x5AE750); }
 
 	// copy ctor
 	Matrix3D(const Matrix3D& another)
 	{
-		memcpy(this, &another, sizeof(Matrix3D));
+		std::memcpy(this, &another, sizeof(Matrix3D));
 		// JMP_THIS(0x5AE610);
 	}
 
@@ -71,7 +71,7 @@ public:
 
 	Matrix3D& operator=(const Matrix3D& another)
 	{
-		memcpy(this, &another, sizeof(Matrix3D));
+		std::memcpy(this, &another, sizeof(Matrix3D));
 		return *this;
 	}
 
@@ -80,34 +80,109 @@ public:
 	// Non virtual
 
 	// operators
-	Matrix3D operator*(const Matrix3D& b) const
+
+	static Matrix3D* __fastcall __MatrixMultiply(Matrix3D* ret, const Matrix3D* A, const Matrix3D* B) { JMP_STD(0x5AF980); }
+	Matrix3D operator*(const Matrix3D& B) const
 	{
 		Matrix3D ret;
-		MatrixMultiply(&ret, this, &b);
+
+		for (int i = 0; i < 3; ++i)
+		{
+			for (int j = 0; j < 3; ++j)
+				ret.row[i][j] =
+				this->row[i][0] * B.row[0][j] +
+				this->row[i][1] * B.row[1][j] +
+				this->row[i][2] * B.row[2][j];
+
+			ret.row[i][3] =
+				this->row[i][0] * B.row[0][3] +
+				this->row[i][1] * B.row[1][3] +
+				this->row[i][2] * B.row[2][3] +
+				this->row[i][3];
+		}
+
 		return ret;
 	}
+	
 	void operator*=(const Matrix3D& another)
 	{
-		MatrixMultiply(this, this, &another);
-	}
-	Vector3D<float> operator*(const Vector3D<float>& point) const
-	{
-		Vector3D<float> ret;
-		MatrixMultiply(&ret, this, &point);
-		return ret;
+		*this = *this * another;
 	}
 
-	void MakeIdentity() { JMP_THIS(0x5AE860); } // 1-matrix
-	void Translate(float x, float y, float z) { JMP_THIS(0x5AE890); }
-	void Translate(Vector3D<float> const& vec) { JMP_THIS(0x5AE8F0); }
-	void TranslateX(float x) { JMP_THIS(0x5AE980); }
-	void TranslateY(float y) { JMP_THIS(0x5AE9B0); }
-	void TranslateZ(float z) { JMP_THIS(0x5AE9E0); }
-	void Scale(float factor) { JMP_THIS(0x5AEA10); }
-	void Scale(float x, float y, float z) { JMP_THIS(0x5AEA70); }
-	void ScaleX(float factor) { JMP_THIS(0x5AEAD0); }
-	void ScaleY(float factor) { JMP_THIS(0x5AEAF0); }
-	void ScaleZ(float factor) { JMP_THIS(0x5AEB20); }
+	static Vector3D<float>* __fastcall __MatrixMultiply(Vector3D<float>* ret, const Matrix3D* mat, const Vector3D<float>* vec) { JMP_STD(0x5AFB80); }
+	Vector3D<float> operator*(const Vector3D<float>& point) const
+	{
+		return RotateVector(point) + Vector3D<float>{row[0][3], row[1][3], row[2][3]};
+	}
+
+	void MakeIdentity()// { JMP_THIS(0x5AE860); } // 1-matrix
+	{
+		for (int i = 0; i < 3; i++)
+			for (int j = 0; j < 4; j++)
+				row[i][j] = i == j ? 1.f : 0.f;
+	}
+
+	void Translate(float x, float y, float z) //{ JMP_THIS(0x5AE890); }
+	{
+		TranslateX(x);
+		TranslateY(y);
+		TranslateZ(z);
+	}
+
+	void Translate(Vector3D<float> const& vec) //{ JMP_THIS(0x5AE8F0); }
+	{
+		Translate(vec.X, vec.Y, vec.Z);
+	}
+
+	void TranslateX(float x) //{ JMP_THIS(0x5AE980); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][3] += x * row[i][0];
+	}
+
+	void TranslateY(float y) //{ JMP_THIS(0x5AE9B0); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][3] += y * row[i][1];
+	}
+
+	void TranslateZ(float z) //{ JMP_THIS(0x5AE9E0); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][3] += z * row[i][2];
+	}
+
+	void Scale(float factor) //{ JMP_THIS(0x5AEA10); }
+	{
+		for (float& i : Data)
+			i *= factor;
+	}
+
+	void Scale(float x, float y, float z) //{ JMP_THIS(0x5AEA70); }
+	{
+		ScaleX(x);
+		ScaleY(y);
+		ScaleZ(z);
+	}
+
+	void ScaleX(float factor) //{ JMP_THIS(0x5AEAD0); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][0] *= factor;
+	}
+
+	void ScaleY(float factor) //{ JMP_THIS(0x5AEAF0); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][1] *= factor;
+	}
+
+	void ScaleZ(float factor) //{ JMP_THIS(0x5AEB20); }
+	{
+		for (int i = 0; i < 3; i++)
+			row[i][2] *= factor;
+	}
+
 	void ShearYZ(float y, float z) { JMP_THIS(0x5AEB50); }
 	void ShearXY(float x, float y) { JMP_THIS(0x5AEBA0); }
 	void ShearXZ(float x, float z) { JMP_THIS(0x5AEBF0); }
@@ -120,36 +195,44 @@ public:
 	void RotateY(float Sin, float Cos) { JMP_THIS(0x5AF120); }
 	void RotateZ(float theta) { JMP_THIS(0x5AF1A0); }
 	void RotateZ(float Sin, float Cos) { JMP_THIS(0x5AF240); }
-	float GetXVal() { JMP_THIS(0x5AF2C0); }
-	float GetYVal() { JMP_THIS(0x5AF310); }
-	float GetZVal() { JMP_THIS(0x5AF360); }
-	float GetXRotation() { JMP_THIS(0x5AF3B0); }
-	float GetYRotation() { JMP_THIS(0x5AF410); }
-	float GetZRotation() { JMP_THIS(0x5AF470); }
-	Vector3D<float>* RotateVector(Vector3D<float>* ret, Vector3D<float>* rotate) { JMP_THIS(0x5AF4D0); }
-	Vector3D<float> RotateVector(Vector3D<float>& rotate)
+
+	float GetXVal() const //{ JMP_THIS(0x5AF2C0); }
 	{
-		Vector3D<float> buffer;
-		RotateVector(&buffer, &rotate);
-		return buffer;
+		return row[0][3];
 	}
+
+	float GetYVal() const //{ JMP_THIS(0x5AF310); }
+	{
+		return row[1][3];
+	}
+
+	float GetZVal() const //{ JMP_THIS(0x5AF360); }
+	{
+		return row[2][3];
+	}
+
+	Vector3D<float> GetTranslation()  const
+	{
+		return {row[0][3],row[1][3],row[2][3] };
+	}
+
+	float GetXRotation() const { JMP_THIS(0x5AF3B0); }
+	float GetYRotation() const { JMP_THIS(0x5AF410); }
+	float GetZRotation() const { JMP_THIS(0x5AF470); }
+
+	Vector3D<float>* __RotateVector(Vector3D<float>* ret, Vector3D<float>* rotate) const { JMP_THIS(0x5AF4D0); }
+	Vector3D<float> RotateVector(Vector3D<float> const& rotate) const
+	{
+		return {
+			row[0][0] * rotate.X + row[0][1] * rotate.Y + row[0][2] * rotate.Z,
+			row[1][0] * rotate.X + row[1][1] * rotate.Y + row[1][2] * rotate.Z,
+			row[2][0] * rotate.X + row[2][1] * rotate.Y + row[2][2] * rotate.Z,
+		};
+	}
+
 	void LookAt1(Vector3D<float>& p, Vector3D<float>& t, float roll) { JMP_THIS(0x5AF550); }
 	void LookAt2(Vector3D<float>& p, Vector3D<float>& t, float roll) { JMP_THIS(0x5AF710); }
 
-	static Matrix3D* __fastcall MatrixMultiply(Matrix3D* ret, const Matrix3D* A, const Matrix3D* B) { JMP_STD(0x5AF980); }
-	static Matrix3D MatrixMultiply(const Matrix3D& A, const Matrix3D& B)
-	{
-		Matrix3D buffer;
-		MatrixMultiply(&buffer, &A, &B);
-		return buffer;
-	}
-	static Vector3D<float>* __fastcall MatrixMultiply(Vector3D<float>* ret, const Matrix3D* mat, const Vector3D<float>* vec) { JMP_STD(0x5AFB80); }
-	static Vector3D<float> MatrixMultiply(const Matrix3D& mat, const Vector3D<float>& vec)
-	{
-		Vector3D<float> buffer;
-		MatrixMultiply(&buffer, &mat, &vec);
-		return buffer;
-	}
 	static Matrix3D* __fastcall TransposeMatrix(Matrix3D* buffer, const Matrix3D* mat) { JMP_STD(0x5AFC20); }
 	static Matrix3D TransposeMatrix(const Matrix3D& mat)
 	{
@@ -179,7 +262,7 @@ public:
 
 	static Matrix3D GetIdentity()
 	{
-		Matrix3D mtx { };
+		Matrix3D mtx;
 		mtx.MakeIdentity();
 		return mtx;
 	}
@@ -190,6 +273,6 @@ public:
 	{
 		Vector4D<float> Row[3];
 		float row[3][4];
-		float Data[12];
+		float Data[12] = {};
 	};
 };
