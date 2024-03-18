@@ -498,6 +498,10 @@ public:
 		return ret;
 	}
 
+	// Invokes AI response on their 'base' being attacked. Used by buildings, ToProtect=true technos and Whiner=true team members.
+	void BaseIsAttacked(TechnoClass* pEnemy)
+		{ JMP_THIS(0x708080); }
+
 	//Constructor
 	TechnoClass(HouseClass* pOwner) noexcept
 		: TechnoClass(noinit_t())
