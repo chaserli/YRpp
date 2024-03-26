@@ -726,6 +726,18 @@ enum class AltCellFlags : unsigned int
 
 MAKE_ENUM_FLAGS(AltCellFlags);
 
+enum class PassabilityType : DWORD
+{
+	Passable = 0,
+	Crushable = 1,
+	Destroyable = 2, // Tree or wall
+	Beach = 3,
+	Water = 4,
+	HasFreeSpots = 5,
+	Impassable = 6,
+	OutsideMap = 7
+};
+
 enum class FacingType : char
 {
 	North = 0,

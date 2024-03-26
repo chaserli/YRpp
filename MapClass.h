@@ -179,6 +179,11 @@ public:
 	// this actually points to 5 vectors, one for each layer
 	static constexpr reference<LayerClass, 0x8A0360u, 5u> const ObjectsInLayers{};
 
+	/// <summary>
+	/// Some sort of hardcoded constant lookup matrix with rows (0-8) representing CellClass Passability(Type) and columns are MovementZones, used to determine pathfinding behaviour.
+	/// </summary>
+	static constexpr reference<int[13u], 0x82A594u, 8u> const MovementAdjustArray { };
+
 	static LayerClass* GetLayer(Layer lyr)
 	{
 		return (lyr >= Layer::Underground && lyr <= Layer::Top)
