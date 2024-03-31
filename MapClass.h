@@ -380,6 +380,9 @@ public:
 	bool IsLinkedBridgeDestroyed(const CellStruct& cell) const
 		{ JMP_THIS(0x587410); }
 
+	bool PlacePowerupCrate(CellStruct cell, Powerup type)
+		{ JMP_THIS(0x56BEC0); }
+
 // ====================================
 //         FIRESTORM RELATED
 // ====================================
