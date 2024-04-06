@@ -49,7 +49,7 @@ public:
 	StageClass Animation;
 	TerrainTypeClass* Type;
 	bool IsBurning; // this terrain object has been ignited
-	bool TimeToDie; // finish the animation and uninit
+	bool IsCrumbling; // finish the animation and uninit
 	RectangleStruct unknown_rect_D0;
 
 };
