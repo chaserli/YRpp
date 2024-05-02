@@ -241,7 +241,7 @@ public:
 	virtual int VoiceMove() R0;
 	virtual int VoiceDeploy() R0;
 	virtual int VoiceAttack(ObjectClass *pTarget) R0;
-	virtual bool ClickedEvent(NetworkEvents event) R0;
+	virtual bool ClickedEvent(EventType event) R0;
 
 	// depending on the mission you click, cells/Target are not always needed
 	virtual bool ClickedMission(Mission Mission, ObjectClass *pTarget, CellClass * TargetCell, CellClass *NearestTargetCellICanEnter) R0;
