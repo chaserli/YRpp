@@ -32,7 +32,7 @@ class ParticleSystemClass;
 class SpawnManagerClass;
 class WaveClass;
 
-struct NetworkEvent;
+struct EventClass;
 
 #include <TransitionTimer.h>
 
@@ -435,7 +435,7 @@ public:
 	int sub_70DE00(int State)
 		{ JMP_THIS(0x70DE00); }
 
-	int __fastcall ClearPlanningTokens(NetworkEvent* pEvent)
+	int __fastcall ClearPlanningTokens(EventClass* pEvent)
 		{ JMP_STD(0x6386E0); }
 
 	void SetTargetForPassengers(AbstractClass* pTarget)
