@@ -120,8 +120,15 @@ public:
 	void Render(DSurface* pSurface, bool flag, int eMode)
 		{ JMP_THIS(0x6D3D10); }
 
+	[[deprecated]]
 	Point2D* ApplyMatrix_Pixel(Point2D *coords, Point2D *offset)
 		{ JMP_THIS(0x6D2070); }
+	
+	Point2D ApplyMatrix_Pixel(const Point2D& offset)
+	{
+		auto&& temp = this->IsoTransformMatrix * Vector3D<float>{(float)offset.X, (float)offset.Y, 0};
+		return { (int)temp.X,(int)temp.Y };
+	}
 
 public:
 

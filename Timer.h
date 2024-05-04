@@ -28,6 +28,7 @@ struct TimerStruct
 	constexpr TimerStruct() :StartTime { -1 }, TimeLeft { 0 } { };
 	TimerStruct(noinit_t()){ }
 	explicit TimerStruct(int duration) { this->Start(duration); }
+	TimerStruct(const TimerStruct& other):StartTime{other.StartTime },TimeLeft{other.TimeLeft }{}
 
 	void Start(int duration)
 	{

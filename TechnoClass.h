@@ -32,7 +32,7 @@ class ParticleSystemClass;
 class SpawnManagerClass;
 class WaveClass;
 
-struct EventClass;
+class EventClass;
 
 #include <TransitionTimer.h>
 

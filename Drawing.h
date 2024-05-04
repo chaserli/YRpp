@@ -371,6 +371,11 @@ union VoxelIndexKey
 		return Get_Index_ID() != -1;
 	}
 
+	void Invalidate()
+	{
+		*reinterpret_cast<int*>(this) = -1;
+	}
+
 	MainVoxelIndexKey MainVoxel;
 	TurretWeaponVoxelIndexKey TurretWeapon;
 	ShadowVoxelIndexKey Shadow;

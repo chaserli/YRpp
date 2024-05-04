@@ -41,9 +41,9 @@ private:
 	void* vftable;
 public:
 	DWORD MaxPacketSize;
-	DynamicVectorClass<void*> InBuffers;
-	DynamicVectorClass<void*> OutBuffers;
-	DynamicVectorClass<void*> AltOutBuffers;
+	DynamicVectorClass<WinsockBufferType*> InBuffers;
+	DynamicVectorClass<WinsockBufferType*> OutBuffers;
+	DynamicVectorClass<WinsockBufferType*> AltOutBuffers;
 	WinsockBufferType StaticInBuffer[128];
 	WinsockBufferType StaticOutBuffer[128];
 	WinsockBufferType StaticAltOutBuffer[128];

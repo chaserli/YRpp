@@ -670,4 +670,4 @@ struct CheatData {
 };
 
 // this holds four original cheats, keep that limit in mind
-static constexpr constant_ptr<CheatData, 0x825C28> OriginalCheats {};
+static constexpr reference<CheatData, 0x825C28,4> OriginalCheats {};
