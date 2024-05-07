@@ -1272,7 +1272,8 @@ enum class Sequence : int
 	Shovel = 38,
 	Carry = 39,
 	SecondaryFire = 40,
-	SecondaryProne = 41
+	SecondaryProne = 41,
+	Nothing = -1
 };
 
 enum class SequenceFacing : unsigned int
