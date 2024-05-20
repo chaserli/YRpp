@@ -2,6 +2,7 @@
 
 #include <Helpers/CompileTime.h>
 
+#include <CellClass.h>
 #include <GeneralStructures.h>
 #include <ArrayClasses.h>
 
@@ -13,6 +14,8 @@ class AircraftTrackerClass
 public:
 	static constexpr reference<AircraftTrackerClass, 0x887888u> Instance { };
 
+	// Initializes area used by Get().
+	int SetArea(CellClass* pCell, int range) { JMP_THIS(0x412B40) }
 	TechnoClass* Get() { JMP_THIS(0x4137A0) }
 
 	void Add(TechnoClass* entry) { JMP_THIS(0x4134A0) }
