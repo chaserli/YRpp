@@ -110,48 +110,57 @@ struct TauntDataStruct {
 
 struct AudioController
 {
-	void* f_0;
-	DWORD f_4;
-	VocClass* Voice;
+	void* Event; // Pointer to audio event (AudioEventTag) associated with this controller, type not implemented in YRpp as of current.
+	DWORD Stamp;
+	VocClass* EventType;
 	AudioIDXData** AudioIndex;
-	DWORD f_10;
+	DWORD Unused;
 
 	AudioController() :
-		f_0(nullptr),
-		f_4(0),
-		Voice(nullptr),
+		Event(nullptr),
+		Stamp(0),
+		EventType(nullptr),
 		AudioIndex(&AudioIDXData::Instance),
-		f_10(0)
+		Unused(0)
 	{ }
 
 	~AudioController()
 		{ JMP_THIS(0x405C00); }
 
-	// no idea how these differ really
-	void DTOR_1()
+	// Stops the audio event associated with this controller instantly.
+	void Stop()
 		{ JMP_THIS(0x405D40); }
 
-	void DTOR_2()
+	// Ends the audio event associated with this controller, allowing it to fade out.
+	void End()
 		{ JMP_THIS(0x405FD0); }
 
-	void ShutUp()
+	// Stops the looping of audio event associated with this controller instantly.
+	void StopLooping()
+		{ JMP_THIS(0x405E80); }
+
+	// Ends the looping of audio event associated with this controller, allowing it to fade out.
+	void EndLooping()
 		{ JMP_THIS(0x406060); }
 
-	void __fastcall sub_4060F0(int a1, int a2)
-		{ JMP_STD(0x4060F0); }
+	void SetEvent(void* event, VocClass* eventType)
+		{ JMP_THIS(0x4060F0); }
 
-	void sub_406130()
+	void* GetEvent()
 		{ JMP_THIS(0x406130); }
 
-	void sub_406170()
+	VocClass* GetEventType()
 		{ JMP_THIS(0x406170); }
 
-	void __fastcall sub_4061D0(unsigned int arg)
+	// Not actually AudioController function, adjusts volume of a given audio event.
+	static void __fastcall AdjustAudioEventVolume(void* event, unsigned int volume)
 		{ JMP_STD(0x4061D0); }
 
-	void __fastcall sub_406270(unsigned int arg)
+	// Not actually AudioController function, adjusts panning of a given audio event.
+	static void __fastcall AdjustAudioEventPanning(void* event, unsigned int pan)
 		{ JMP_THIS(0x406270); }
 
-	void sub_406310()
-		{ JMP_THIS(0x406310); }
+	// Not actually AudioController function, gets event type (VocClass) of given audio event.
+	static VocClass* __fastcall GetEventType(void* event)
+		{ JMP_STD(0x406310); }
 };
