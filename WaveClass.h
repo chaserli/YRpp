@@ -67,8 +67,8 @@ public:
 	CoordStruct WaveEndSide2Coord;
 	CoordStruct WaveStartSide1Coord;
 	CoordStruct WaveStartSide2Coord;
-	BYTE IsTraveling;
-	BYTE ShouldEnd;
+	bool IsTraveling;
+	bool ShouldEnd;
 	BYTE field_12E;
 	BYTE field_12F;
 	int WaveEC; // for sonic/magna only
