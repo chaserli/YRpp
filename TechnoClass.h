@@ -618,8 +618,8 @@ public:
 	TechnoClass*     BunkerLinkedItem;
 
 	float            PitchAngle; // not exactly, and it doesn't affect the drawing, only internal state of a dropship
-	DECLARE_PROPERTY(CDTimerClass, DiskLaserTimer);
-	int           	 ROF;
+	DECLARE_PROPERTY(CDTimerClass, RearmTimer); // Originally named Arm in RA1, but this is more descriptive name.
+	int           	 ChargeTurretDelay;         // Set to same duration (frames) as RearmTimer when weapon is fired. Only used by IsChargeTurret to calculate timespan during which to display turret animation.
 	int              Ammo;
 	int              Value; // set to actual cost when this gets queued in factory, updated only in building's 42C
 
