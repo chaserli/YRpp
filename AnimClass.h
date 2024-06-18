@@ -105,7 +105,7 @@ public:
 	byte RemainingIterations; // defaulted to deleteAfterIterations, when reaches zero, UnInit() is called
 	byte unknown_196;
 	byte unknown_197;
-	bool IsPlaying;
+	bool IsInert; // Not official name, only set to true on TActionClass-created animations and prevents sounds, damage and TiberiumChainReaction from working.
 	bool IsFogged;
 	bool FlamingGuyExpire; // finish animation and remove
 	bool UnableToContinue; // set when something prevents the anim from going on: cell occupied, veins destoyed or unit gone, ...
