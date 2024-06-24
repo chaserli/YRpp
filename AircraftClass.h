@@ -61,14 +61,14 @@ protected:
 public:
 
 	AircraftTypeClass* Type;
-	bool unknown_bool_6C8;
+	bool ShouldLoseAmmo; // Whether or not to deduct ammo after firing run (strafing) is over
 	bool HasPassengers;	//parachutes
 	bool IsKamikaze; // when crashing down, duh
 	BuildingClass* DockNowHeadingTo;
 	bool unknown_bool_6D0;
 	bool unknown_bool_6D1;
-	bool unknown_bool_6D2;
-	char unknown_char_6D3;
-	bool unknown_bool_6D4;
-	bool unknown_bool_6D5;
+	bool IsLocked; // Whether or not aircraft is locked to a firing run (strafing)
+	char NumParadropsLeft;
+	bool IsCarryallNotLanding;
+	bool IsReturningFromAttackRun; // Aircraft finished attack run and/or went idle and is now returning from it
 };
