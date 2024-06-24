@@ -264,7 +264,7 @@ public:
 	virtual FireError GetFireErrorWithoutRange(AbstractClass *pTarget, int nWeaponIndex) const RT(FireError);
 	virtual FireError GetFireError(AbstractClass *pTarget, int nWeaponIndex, bool ignoreRange) const RT(FireError);
 	virtual CellClass* SelectAutoTarget(TargetFlags TargetFlags, int CurrentThreat, bool OnlyTargetHouseEnemy) R0;
-	virtual void SetTarget(AbstractClass *pTarget) RX;
+	virtual void SetTarget(AbstractClass* pTarget) const JMP_THIS(0x6FCDB0);
 	virtual BulletClass* Fire(AbstractClass* pTarget, int nWeaponIndex) R0;
 	virtual void Guard() RX; // clears target and destination and puts in guard mission
 	virtual bool SetOwningHouse(HouseClass* pHouse, bool announce = true) R0;
