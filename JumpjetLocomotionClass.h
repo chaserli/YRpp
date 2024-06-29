@@ -8,7 +8,6 @@ class NOVTABLE JumpjetLocomotionClass : public LocomotionClass, public IPiggybac
 {
 public:
 	static constexpr uintptr_t ILocoVTable = 0x7ECD68;
-	static constexpr reference<CLSID const, 0x7E9AC0u> const ClassGUID {};
 
 	enum State
 	{

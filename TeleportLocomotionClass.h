@@ -8,7 +8,6 @@ class NOVTABLE TeleportLocomotionClass : public LocomotionClass, public IPiggyba
 {
 public:
 	static constexpr uintptr_t ILocoVTable = 0x7F5000;
-	static constexpr reference<CLSID const, 0x7E9A90u> const ClassGUID {};
 
 	//IUnknown
 	virtual HRESULT __stdcall QueryInterface(REFIID iid, void** ppvObject) R0;

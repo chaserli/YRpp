@@ -8,7 +8,6 @@ class NOVTABLE ShipLocomotionClass : public LocomotionClass, public IPiggyback
 {
 public:
 	static constexpr uintptr_t ILocoVTable = 0x7F2D8C;
-	static constexpr reference<CLSID const, 0x7E9AB0u> const ClassGUID {};
 
 	// TODO stub virtuals implementations
 
