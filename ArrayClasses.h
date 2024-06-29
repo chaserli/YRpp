@@ -14,8 +14,8 @@ class VectorClass
 {
 public:
 	// the hidden element count messes with alignment. only applies to align 8, 16, ...
-	static_assert(!needs_vector_delete<T>::value || (__alignof(T) <= 4), "Alignment of T needs to be less than or equal to 4.");
-
+	static_assert(!needs_vector_delete<T> || (__alignof(T) <= 4), "Alignment of T needs to be less than or equal to 4.");
+	static constexpr bool GameCreateDisallowed = true;
 	constexpr VectorClass() noexcept = default;
 
 	explicit VectorClass(int capacity, T* pMem = nullptr) {
@@ -195,7 +195,7 @@ class DynamicVectorClass : public VectorClass<T>
 {
 public:
 	constexpr DynamicVectorClass() noexcept = default;
-
+	static constexpr bool GameCreateDisallowed = true;
 	explicit DynamicVectorClass(int capacity, T* pMem = nullptr)
 		: VectorClass(capacity, pMem)
 	{ }
@@ -362,7 +362,7 @@ class TypeList : public DynamicVectorClass<T>
 {
 public:
 	constexpr TypeList() noexcept = default;
-
+	static constexpr bool GameCreateDisallowed = true;
 	explicit TypeList(int capacity, T* pMem = nullptr)
 		: DynamicVectorClass<T>(capacity, pMem)
 	{ }
@@ -402,7 +402,7 @@ class CounterClass : public VectorClass<int>
 {
 public:
 	constexpr CounterClass() noexcept = default;
-
+	static constexpr bool GameCreateDisallowed = true;
 	CounterClass(const CounterClass& other)
 		: VectorClass(other), Total(other.Total)
 	{ }

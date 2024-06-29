@@ -65,13 +65,16 @@ namespace YRMemory {
 }
 
 template<typename T>
-struct needs_vector_delete : std::integral_constant<bool,
-	!std::is_scalar<T>::value && !std::is_trivially_destructible<T>::value> {};
+concept needs_vector_delete = !std::is_scalar_v<T> && !std::is_trivially_destructible_v<T>;
 
 // this is a stateless basic allocator definition that manages memory using the
 // game's operator new and operator delete methods. do not use it directly,
 // though. use std::allocator_traits, which will fill in the blanks.
-template <typename T>
+
+template<typename T>
+concept CanUseGameAlloc = !requires { { T::GameCreateDisallowed } ->std::convertible_to<const bool>; } || T::GameCreateDisallowed == false;
+
+template <CanUseGameAlloc T>
 struct GameAllocator {
 	using value_type = T;
 

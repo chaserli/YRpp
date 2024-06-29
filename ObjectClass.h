@@ -165,7 +165,7 @@ public:
 	virtual DWORD GetPointsValue() const R0;
 	virtual Mission GetCurrentMission() const RT(Mission);
 	virtual void RestoreMission(Mission mission) RX;
-	virtual void UpdatePosition(int dwUnk) RX;
+	virtual void UpdatePosition(PCPType how) RX;
 	virtual BuildingClass* FindFactory(bool allowOccupied, bool requirePower) const R0;
 	virtual RadioCommand ReceiveCommand(TechnoClass* pSender, RadioCommand command, AbstractClass* &pInOut) RT(RadioCommand);
 	virtual bool DiscoveredBy(HouseClass *pHouse) R0;

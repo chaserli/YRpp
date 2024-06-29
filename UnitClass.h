@@ -43,6 +43,8 @@ public:
 	// ...and so on
 	// FIXME other virtual function explicit addresses
 
+	virtual FireError GetFireError(AbstractClass* pTarget, int nWeaponIndex, bool ignoreRange) const override JMP_THIS(0x740FD0);
+
 	//UnitClass
 	// main drawing functions - Draw() calles one of these, they call parent's Draw_A_smth
 	virtual void DrawAsVXL(Point2D Coords, RectangleStruct BoundingRect, int Brightness, int Tint)

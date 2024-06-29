@@ -26,6 +26,14 @@ public:
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int	Size() const R0;
 
+	//ObjectClass
+
+	virtual Action MouseOverObject(ObjectClass const* pObject, bool ignoreForce = false) const override JMP_THIS(0x51E3B0);
+
+	//TechnoClass
+	virtual FireError GetFireError(AbstractClass* pTarget, int nWeaponIndex, bool ignoreRange) const override JMP_THIS(0x51C8B0);
+
+
 	//InfantryClass
 	virtual bool IsDeployed() const R0;
 	virtual bool PlayAnim(Sequence index, bool force = false, bool randomStartFrame = false) R0;

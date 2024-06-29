@@ -215,17 +215,6 @@ public:
 	}
 };
 
-//TODO: Move to CMakeLists.txt
-#ifdef __clang__
-#pragma clang diagnostic push
-
-#pragma clang diagnostic ignored "-Wunused-variable"
-#pragma clang diagnostic ignored "-Wunused-parameter"
-#pragma clang diagnostic ignored "-Wunused-value"
-//...
-//#pragma clang diagnostic pop
-#endif
-
 //Use this for DLL export functions
 //e.g. EXPORT FunctionName(REGISTERS* R)
 #define EXPORT extern "C" __declspec(dllexport) DWORD __cdecl

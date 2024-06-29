@@ -1685,6 +1685,13 @@ enum class ZoneType : int
 	West = 4
 };
 
+enum class PCPType : unsigned char // Per_Cell_Process 
+{
+	Rotation = 0,		// When sitting in place and performing rotations.
+	During = 1,			// While moving between two cells. Is this ever used? Tell me if you found any
+	End = 2,			// When the 'center' of a cell is reached during movement.
+};
+
 //Westwood custom messages (e.g. for SendMessage)
 #define	WW_SLIDER_GETVALUE			0x400
 
