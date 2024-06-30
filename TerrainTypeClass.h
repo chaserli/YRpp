@@ -13,7 +13,8 @@ public:
 
 	//Array
 	ABSTRACTTYPE_ARRAY(TerrainTypeClass, 0xA8E318u);
-
+	static TerrainTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x71E2A0); }
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

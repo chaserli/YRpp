@@ -18,7 +18,8 @@ public:
 
 	//Array
 	ABSTRACTTYPE_ARRAY(AnimTypeClass, 0x8B4150u);
-
+	static AnimTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x428B80); }
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

@@ -19,16 +19,6 @@ class CCINIClass;
 				return pItem;\
 		return nullptr;\
 	}\
-	static __declspec(noinline) class_name* __fastcall FindOrAllocate(const char* pID)\
-	{\
-		if(!_strcmpi(pID, "<none>") || !_strcmpi(pID, "none")) {\
-			return nullptr;\
-		}\
-		if(auto pRet = Find(pID)) {\
-			return pRet;\
-		}\
-		return GameCreate<class_name>(pID);\
-	}\
 	static __declspec(noinline) int __fastcall FindIndex(const char* pID)\
 	{\
 		for(int i = 0; i < Array->Count; ++i)\

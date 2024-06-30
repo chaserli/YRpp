@@ -22,7 +22,8 @@ public:
 
 	//Array
 	ABSTRACTTYPE_ARRAY(BulletTypeClass, 0xA83C80u);
-
+	static BulletTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x46C790); }
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

@@ -27,6 +27,9 @@ public:
 	//Array
 	ABSTRACTTYPE_ARRAY(WarheadTypeClass, 0x8874C0u);
 
+	static WarheadTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x75E3B0); }
+
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

@@ -20,6 +20,9 @@ public:
 	//Array
 	ABSTRACTTYPE_ARRAY(WeaponTypeClass, 0x887568u);
 
+	static WeaponTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x772FA0); }
+
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

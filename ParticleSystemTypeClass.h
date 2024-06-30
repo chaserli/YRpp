@@ -15,7 +15,8 @@ public:
 
 	//Array
 	ABSTRACTTYPE_ARRAY(ParticleSystemTypeClass, 0xA83D68u);
-
+	static ParticleSystemTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x644890); }
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

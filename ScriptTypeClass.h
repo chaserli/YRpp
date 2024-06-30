@@ -22,6 +22,8 @@ public:
 
 	//Array
 	ABSTRACTTYPE_ARRAY(ScriptTypeClass, 0x8B41C8u);
+	static ScriptTypeClass* __fastcall FindOrAllocate(const char* id)
+	{ JMP_STD(0x691C00); }
 
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
