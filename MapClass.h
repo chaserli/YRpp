@@ -16,6 +16,9 @@ class GroundType
 public:
 	static constexpr reference<GroundType, 0x89EA40u, 12u> const Array {};
 
+	static LandType __fastcall GetLandTypeFromName(const char* name)
+		{ JMP_STD(0x48DF80); }
+
 	//Properties
 	float Cost[8];  // Terrain speed multipliers.
 	bool Buildable; // Can build on this terrain?
