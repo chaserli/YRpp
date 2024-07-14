@@ -187,9 +187,6 @@ public:
 	/// </summary>
 	static constexpr reference<int[13u], 0x82A594u, 8u> const MovementAdjustArray { };
 
-	static constexpr reference<int, 0x87F914u> const MapWidthInCells{};
-	static constexpr reference<int, 0x87F918u> const MapHeightInCells {};
-
 	static LayerClass* GetLayer(Layer lyr)
 	{
 		return (lyr >= Layer::Underground && lyr <= Layer::Top)
