@@ -15,7 +15,7 @@ public:
 	static constexpr reference<AircraftTrackerClass, 0x887888u> Instance { };
 
 	// Fills CurrentVector with items from TrackerVectors matching given range around cell.
-	int FillCurrentVector(CellClass* pCell, int range) { JMP_THIS(0x412B40) }
+	void FillCurrentVector(CellClass* pCell, int range) { JMP_THIS(0x412B40) }
 
 	// Gets items from CurrentVector.
 	TechnoClass* Get() { JMP_THIS(0x4137A0) }
