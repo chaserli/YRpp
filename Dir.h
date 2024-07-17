@@ -11,28 +11,28 @@ enum class DirType : unsigned char;
 struct DirStruct
 {
 public:
-	explicit DirStruct() noexcept : Raw { 0 } { }
-	explicit DirStruct(int raw) noexcept : Raw { static_cast<unsigned short>(raw) } { }
-	explicit DirStruct(double rad) noexcept { SetRadian<65536>(rad); }
-	explicit DirStruct(const DirType dir) noexcept { SetDir(dir); }
-	explicit DirStruct(const noinit_t&) noexcept { }
+	constexpr explicit DirStruct() noexcept : Raw { 0 } { }
+	constexpr explicit DirStruct(int raw) noexcept : Raw { static_cast<unsigned short>(raw) } { }
+	constexpr explicit DirStruct(double rad) noexcept { SetRadian<65536>(rad); }
+	constexpr explicit DirStruct(const DirType dir) noexcept { SetDir(dir); }
+	constexpr explicit DirStruct(const noinit_t&) noexcept { }
 
-	bool operator==(const DirStruct& another) const
+	constexpr bool operator==(const DirStruct& another) const
 	{
 		return Raw == another.Raw;
 	}
 
-	bool operator!=(const DirStruct& another) const
+	constexpr bool operator!=(const DirStruct& another) const
 	{
 		return Raw != another.Raw;
 	}
 
-	void SetDir(DirType dir)
+	constexpr void SetDir(DirType dir)
 	{
 		Raw = static_cast<unsigned short>(static_cast<unsigned char>(dir) * 256);
 	}
 
-	DirType GetDir() const
+	constexpr DirType GetDir() const
 	{
 		return static_cast<DirType>(Raw / 256);
 	}
@@ -71,7 +71,7 @@ public:
 	}
 
 	template<size_t FacingCount>
-	double GetRadian()
+	constexpr double GetRadian() const
 	{
 		static_assert(std::has_single_bit(FacingCount));
 
@@ -83,7 +83,7 @@ public:
 	}
 
 	template<size_t FacingCount>
-	void SetRadian(double rad)
+	constexpr void SetRadian(double rad)
 	{
 		static_assert(std::has_single_bit(FacingCount));
 

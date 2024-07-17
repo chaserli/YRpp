@@ -154,11 +154,12 @@ public:
 		return this->UniqueID < rhs.UniqueID;
 	}
 
-	//Constructor
-	AbstractClass() noexcept
-		: AbstractClass(noinit_t())
+	//Constructor : Don't call this!
+	AbstractClass() noexcept = delete;
+	/*
+	: AbstractClass(noinit_t())
 	{ JMP_THIS(0x410170); }
-
+	*/
 protected:
 	explicit __forceinline AbstractClass(noinit_t) noexcept
 	{ }

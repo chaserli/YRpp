@@ -14,8 +14,9 @@ struct FrameTimer
 
 struct SystemTimer
 {
-	long operator()()const { return timeGetTime() >> 4; }
-	operator long() const { return timeGetTime() >> 4; }
+	static DWORD GetTime() JMP_STD(0x6C8C40);
+	long operator()()const { return SystemTimer::GetTime(); }
+	operator long() const { return SystemTimer::GetTime(); }
 };
 
 template<TimerType Clock>
@@ -26,7 +27,7 @@ struct TimerStruct
 	int TimeLeft;
 
 	constexpr TimerStruct() :StartTime { -1 }, TimeLeft { 0 } { };
-	TimerStruct(noinit_t()){ }
+	explicit TimerStruct(const noinit_t&){ }
 	explicit TimerStruct(int duration) { this->Start(duration); }
 	TimerStruct(const TimerStruct& other):StartTime{other.StartTime },TimeLeft{other.TimeLeft }{}
 

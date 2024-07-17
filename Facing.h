@@ -9,7 +9,7 @@ class FacingClass
 {
 public:
 	explicit FacingClass() noexcept { }
-
+	explicit FacingClass(const noinit_t&) noexcept { }
 	explicit FacingClass(int rate) noexcept
 	{
 		SetROT(rate);

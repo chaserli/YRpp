@@ -26,11 +26,12 @@ class Matrix3D
 public:
 
 	//Constructor
+	constexpr Matrix3D() :Data {} { }
 
-	Matrix3D() = default;
+	constexpr Matrix3D(const noinit_t&) { }
 
 	// plain floats ctor
-	Matrix3D(
+	constexpr Matrix3D(
 		float m00, float m01, float m02, float m03,
 		float m10, float m11, float m12, float m13,
 		float m20, float m21, float m22, float m23)
@@ -77,30 +78,32 @@ public:
 
 	Matrix3D& operator=(Matrix3D&& another) = default;
 
-	// Non virtual
-
 	// operators
 
-	static Matrix3D* __fastcall __MatrixMultiply(Matrix3D* ret, const Matrix3D* A, const Matrix3D* B) { JMP_STD(0x5AF980); }
-	Matrix3D operator*(const Matrix3D& B) const
+	static Matrix3D* __fastcall MatrixMultiply(Matrix3D* ret, const Matrix3D* A, const Matrix3D* B)// { JMP_STD(0x5AF980); }
 	{
-		Matrix3D ret;
-
 		for (int i = 0; i < 3; ++i)
 		{
 			for (int j = 0; j < 3; ++j)
-				ret.row[i][j] =
-				this->row[i][0] * B.row[0][j] +
-				this->row[i][1] * B.row[1][j] +
-				this->row[i][2] * B.row[2][j];
+				ret->row[i][j] =
+				A->row[i][0] * B->row[0][j] +
+				A->row[i][1] * B->row[1][j] +
+				A->row[i][2] * B->row[2][j];
 
-			ret.row[i][3] =
-				this->row[i][0] * B.row[0][3] +
-				this->row[i][1] * B.row[1][3] +
-				this->row[i][2] * B.row[2][3] +
-				this->row[i][3];
+			ret->row[i][3] =
+				A->row[i][0] * B->row[0][3] +
+				A->row[i][1] * B->row[1][3] +
+				A->row[i][2] * B->row[2][3] +
+				A->row[i][3];
 		}
 
+		return ret;
+	}
+
+	Matrix3D operator*(const Matrix3D& B) const
+	{
+		Matrix3D ret {noinit_t()};
+		MatrixMultiply(&ret, this, &B);
 		return ret;
 	}
 	
@@ -109,7 +112,7 @@ public:
 		*this = *this * another;
 	}
 
-	static Vector3D<float>* __fastcall __MatrixMultiply(Vector3D<float>* ret, const Matrix3D* mat, const Vector3D<float>* vec) { JMP_STD(0x5AFB80); }
+//	static Vector3D<float>* __fastcall MatrixApply(Vector3D<float>* ret, const Matrix3D* mat, const Vector3D<float>* vec) { JMP_STD(0x5AFB80); }
 	Vector3D<float> operator*(const Vector3D<float>& point) const
 	{
 		return RotateVector(point) + Vector3D<float>{row[0][3], row[1][3], row[2][3]};
@@ -129,9 +132,10 @@ public:
 		TranslateZ(z);
 	}
 
-	void Translate(Vector3D<float> const& vec) //{ JMP_THIS(0x5AE8F0); }
+	template<typename U>
+	void Translate(Vector3D<U> const& vec) //{ JMP_THIS(0x5AE8F0); }
 	{
-		Translate(vec.X, vec.Y, vec.Z);
+		Translate(float(vec.X), float(vec.Y), float(vec.Z));
 	}
 
 	void TranslateX(float x) //{ JMP_THIS(0x5AE980); }
@@ -220,7 +224,7 @@ public:
 	float GetYRotation() const { JMP_THIS(0x5AF410); }
 	float GetZRotation() const { JMP_THIS(0x5AF470); }
 
-	Vector3D<float>* __RotateVector(Vector3D<float>* ret, Vector3D<float>* rotate) const { JMP_THIS(0x5AF4D0); }
+//	Vector3D<float>* __RotateVector(Vector3D<float>* ret, Vector3D<float>* rotate) const { JMP_THIS(0x5AF4D0); }
 	Vector3D<float> RotateVector(Vector3D<float> const& rotate) const
 	{
 		return {
@@ -262,7 +266,7 @@ public:
 
 	static Matrix3D GetIdentity()
 	{
-		Matrix3D mtx;
+		Matrix3D mtx {noinit_t()};
 		mtx.MakeIdentity();
 		return mtx;
 	}
@@ -273,6 +277,6 @@ public:
 	{
 		Vector4D<float> Row[3];
 		float row[3][4];
-		float Data[12] = {};
+		float Data[12];
 	};
 };
