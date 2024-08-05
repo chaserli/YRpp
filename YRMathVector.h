@@ -185,6 +185,22 @@ public:
 		Z *= r;
 		return *this;
 	}
+	//scalar division
+	Vector3D operator/(double r) const
+	{
+		return Vector3D {
+			static_cast<T>(X / r),
+			static_cast<T>(Y / r),
+			static_cast<T>(Z / r) };
+	}
+	//scalar division
+	Vector3D& operator/=(double r)
+	{
+		X /= r;
+		Y /= r;
+		Z /= r;
+		return *this;
+	}
 	//vector multiplication
 	double operator*(const Vector3D& a) const
 	{
@@ -236,6 +252,12 @@ public:
 			Y * a.Z - Z * a.Y,
 			Z * a.X - X * a.Z,
 			X * a.Y - Y * a.X };
+	}
+	//normalize
+	Vector3D Normalized() const
+	{
+		double magnitude = this->Magnitude();
+		return magnitude > 0.0 ? *this / magnitude : Vector3D::Empty;
 	}
 };
 
