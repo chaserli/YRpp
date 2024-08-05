@@ -46,6 +46,9 @@ public:
 	static constexpr reference<bool, 0xA8F7ACu> const DontSetExceptionHandler{};
 	static constexpr reference<bool, 0xB04880u> const EnableMPSyncDebug{};
 
+	static constexpr reference<Vector3D<float>, 0x887470> const VoxelLightSource { };
+	static constexpr reference<Vector3D<float>, 0x887420> const VoxelShadowLightSource { };
+
 	static struct Network
 	{
 	public:
@@ -135,6 +138,9 @@ public:
 
 	static void ShowSpecialDialog()
 		{ JMP_STD(0x48C8B0); }
+
+	static void __fastcall DestroyVoxelCaches()
+		{ JMP_STD(0x755C50); }
 
 	static void InitUIStuff()
 	{
