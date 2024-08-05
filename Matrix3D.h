@@ -106,7 +106,7 @@ public:
 		MatrixMultiply(&ret, this, &B);
 		return ret;
 	}
-	
+
 	void operator*=(const Matrix3D& another)
 	{
 		*this = *this * another;
@@ -115,7 +115,7 @@ public:
 //	static Vector3D<float>* __fastcall MatrixApply(Vector3D<float>* ret, const Matrix3D* mat, const Vector3D<float>* vec) { JMP_STD(0x5AFB80); }
 	Vector3D<float> operator*(const Vector3D<float>& point) const
 	{
-		return RotateVector(point) + Vector3D<float>{row[0][3], row[1][3], row[2][3]};
+		return RotateVector(point) + GetTranslation();
 	}
 
 	void MakeIdentity()// { JMP_THIS(0x5AE860); } // 1-matrix
@@ -215,9 +215,9 @@ public:
 		return row[2][3];
 	}
 
-	Vector3D<float> GetTranslation()  const
+	Vector3D<float> GetTranslation() const
 	{
-		return {row[0][3],row[1][3],row[2][3] };
+		return { row[0][3], row[1][3], row[2][3] };
 	}
 
 	float GetXRotation() const { JMP_THIS(0x5AF3B0); }
