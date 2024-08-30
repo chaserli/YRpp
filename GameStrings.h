@@ -38,6 +38,7 @@ namespace GameStrings
 	GAMEMD_STRING(General     , 0x826278u);
 	GAMEMD_STRING(Basic       , 0x82BF9Cu);
 	GAMEMD_STRING(AudioVisual , 0x839EA8u);
+	GAMEMD_STRING(AI          , 0x839DA4u);
 	GAMEMD_STRING(CombatDamage, 0x839E8Cu);
 	GAMEMD_STRING(Radiation   , 0x839E80u);
 	GAMEMD_STRING(ToolTips    , 0x833188u);
