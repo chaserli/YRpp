@@ -1031,5 +1031,5 @@ public:
 	int TotalOwnedInfantryCost;
 	int TotalOwnedVehicleCost;
 	int TotalOwnedAircraftCost;
-	DWORD unknown_power_160B4;
+	int PowerSurplus;
 };
