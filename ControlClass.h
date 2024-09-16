@@ -5,6 +5,11 @@
 class NOVTABLE ControlClass : public GadgetClass
 {
 public:
+	//TODO overrides
+	
+	//Virtual
+	virtual void MakePeer(GadgetClass* pGadget) RX;
+
 	//Non virtual
 
 	//Statics
@@ -17,10 +22,9 @@ public:
 		: ControlClass(noinit_t()) { JMP_THIS(0x48E570); }
 
 protected:
-	explicit __forceinline ControlClass(noinit_t)  noexcept
+	explicit __forceinline ControlClass(noinit_t) noexcept
 		: GadgetClass(noinit_t())
-	{
-	}
+	{ }
 
 	//Properties
 public:
