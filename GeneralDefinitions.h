@@ -1506,8 +1506,8 @@ enum class QuarryType : unsigned int
 
 enum class ThreatType : unsigned int
 {
-	Range = 0x0,
-	Normal = 0x1,
+	Normal = 0x0,
+	Range = 0x1,
 	Area = 0x2,
 	Air = 0x4,
 	Infantry = 0x8,

@@ -253,7 +253,7 @@ public:
 	virtual void DecreaseAmmo() RX;
 	virtual void AddPassenger(FootClass* pPassenger) RX;
 	virtual bool CanDisguiseAs(AbstractClass*pTarget) const R0;
-	virtual bool TargetAndEstimateDamage(DWORD dwUnk, DWORD dwUnk2) R0;
+	virtual bool TargetAndEstimateDamage(CoordStruct& coord, ThreatType threat) R0;
 	virtual void Stun() RX;
 	virtual bool TriggersCellInset(AbstractClass *pTarget) R0;
 	virtual bool IsCloseEnough(AbstractClass *pTarget, int idxWeapon) const R0;
