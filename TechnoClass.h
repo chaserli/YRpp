@@ -263,7 +263,7 @@ public:
 	virtual void Destroyed(ObjectClass *Killer) = 0;
 	virtual FireError GetFireErrorWithoutRange(AbstractClass *pTarget, int nWeaponIndex) const RT(FireError);
 	virtual FireError GetFireError(AbstractClass *pTarget, int nWeaponIndex, bool ignoreRange) const RT(FireError);
-	virtual CellClass* SelectAutoTarget(TargetFlags TargetFlags, int CurrentThreat, bool OnlyTargetHouseEnemy) R0;
+	virtual CellClass* SelectAutoTarget(ThreatType TargetFlags, int CurrentThreat, bool OnlyTargetHouseEnemy) R0;
 	virtual void SetTarget(AbstractClass* pTarget) JMP_THIS(0x6FCDB0);
 	virtual BulletClass* Fire(AbstractClass* pTarget, int nWeaponIndex) R0;
 	virtual void Guard() RX; // clears target and destination and puts in guard mission
@@ -376,7 +376,7 @@ public:
 
 // slave of the next one
 	bool CanAutoTargetObject(
-		TargetFlags targetFlags,
+		ThreatType targetFlags,
 		int canTargetWhatAmI,
 		int wantedDistance,
 		TechnoClass* pTarget,
@@ -387,7 +387,7 @@ public:
 
 // called by AITeam Attack Target Type and autoscan
 	bool TryAutoTargetObject(
-		TargetFlags targetFlags,
+		ThreatType targetFlags,
 		int canTargetWhatAmI,
 		CellStruct* pCoords,
 		DWORD dwUnk1,

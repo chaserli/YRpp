@@ -1488,45 +1488,45 @@ enum class WaveType : int
 	Magnetron = 3
 };
 
-enum class TargetType : unsigned int
+enum class QuarryType : unsigned int
 {
-	None = 0,
-	Anything = 1,
-	Buildings = 2,
-	Harvesters = 3,
-	Infantry = 4,
-	Vehicles = 5,
-	Factories = 6,
-	BaseDefenses = 7,
-	// unknown = 8,
-	Power = 9,
-	Occupiable = 10,
-	TechBuildings = 11
+	None,
+	Anything,						// Attack any enemy (same as "hunt").
+	Buildings,						// Attack buildings (in general).
+	Harvesters,						// Attack harvesters or refineries.
+	Infantry,						// Attack infantry.
+	Vehicles,						// Attack combat vehicles.
+	Factories,						// Attack factories (all types).
+	Defenses,						// Attack base defense buildings.
+	Threats,						// Attack enemies near friendly base.
+	Power,							// Attack power facilities.
+	OccupiableBuildings,			// Prefer to attack occupiable buildings.
+	TechBuildings					// Prefer to attack tech buildings.	
 };
 
-enum class TargetFlags : unsigned int
+enum class ThreatType : unsigned int
 {
-	None = 0x0,
-	unknown_1 = 0x1,
-	unknown_2 = 0x2,
+	Range = 0x0,
+	Normal = 0x1,
+	Area = 0x2,
 	Air = 0x4,
 	Infantry = 0x8,
 	Vehicles = 0x10,
 	Buildings = 0x20,
-	Economy = 0x40,
-	Ships = 0x80, // from RA1
-	Neutral = 0x100, // from RA1
+	Tiberium = 0x40,
+	Boats = 0x80,
+	Civilians = 0x100,
 	Capture = 0x200,
-	Fakes = 0x400, // from RA1
+	Fakes = 0x400,
 	Power = 0x800,
 	Factories = 0x1000,
 	BaseDefense = 0x2000,
 	Friendlies = 0x4000,
-	Occupiable = 0x8000,
-	TechCapture = 0x10000
+	OccupiableBuildings = 0x8000,
+	TechBuildings = 0x10000
 };
 
-MAKE_ENUM_FLAGS(TargetFlags);
+MAKE_ENUM_FLAGS(ThreatType);
 
 enum class BlitterFlags : unsigned int
 {
