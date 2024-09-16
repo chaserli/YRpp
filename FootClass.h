@@ -25,6 +25,9 @@ public:
 	//AbstractClass
 	//ObjectClass
 	//MissionClass
+
+	virtual int Mission_AreaGuard() override { JMP_THIS(0x4D6AA0); }
+
 	//TechnoClass
 	virtual void Destroyed(ObjectClass *Killer) RX;
 	virtual bool ForceCreate(CoordStruct& coord, DWORD dwUnk = 0) R0;

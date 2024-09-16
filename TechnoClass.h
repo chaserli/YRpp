@@ -263,7 +263,7 @@ public:
 	virtual void Destroyed(ObjectClass *Killer) = 0;
 	virtual FireError GetFireErrorWithoutRange(AbstractClass *pTarget, int nWeaponIndex) const RT(FireError);
 	virtual FireError GetFireError(AbstractClass *pTarget, int nWeaponIndex, bool ignoreRange) const RT(FireError);
-	virtual CellClass* SelectAutoTarget(ThreatType TargetFlags, int CurrentThreat, bool OnlyTargetHouseEnemy) R0;
+	virtual AbstractClass* GreatestThreat(ThreatType threat, CoordStruct* pCoord, bool onlyTargetHouseEnemy) JMP_THIS(0x6F8DF0);
 	virtual void SetTarget(AbstractClass* pTarget) JMP_THIS(0x6FCDB0);
 	virtual BulletClass* Fire(AbstractClass* pTarget, int nWeaponIndex) R0;
 	virtual void Guard() RX; // clears target and destination and puts in guard mission

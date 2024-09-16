@@ -42,6 +42,9 @@ public:
 	void CalculateSpeed()
 		{ JMP_THIS(0x7729F0); }
 
+	ThreatType AllowedThreats()
+		{ JMP_THIS(0x772A90); }
+
 	//Constructor
 	WeaponTypeClass(const char* pID = nullptr)
 		: WeaponTypeClass(noinit_t())
