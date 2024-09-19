@@ -6,7 +6,6 @@
 
 #include <GeneralStructures.h>
 #include <YRMathVector.h>
-#include <Quaternion.h>
 
 class BounceClass
 {

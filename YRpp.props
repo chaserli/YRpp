@@ -245,7 +245,6 @@
     <ClInclude Include="$(YRppDir)\Powerups.h" />
     <ClInclude Include="$(YRppDir)\PreviewClass.h" />
     <ClInclude Include="$(YRppDir)\ProgressScreenClass.h" />
-    <ClInclude Include="$(YRppDir)\Quaternion.h" />
     <ClInclude Include="$(YRppDir)\RadarClass.h" />
     <ClInclude Include="$(YRppDir)\RadarEventClass.h" />
     <ClInclude Include="$(YRppDir)\RadBeam.h" />

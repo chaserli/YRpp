@@ -2,7 +2,6 @@
 
 #include <YRPPCore.h>
 #include <GeneralStructures.h>
-#include <Quaternion.h>
 
 #include <Helpers/CompileTime.h>
 
@@ -20,6 +19,69 @@ public:
 
 template <typename T>
 const Vector4D<T> Vector4D<T>::Empty = { T(), T(), T(), T() };
+
+class Quaternion
+{
+public:
+	constexpr Quaternion() :X { 0.0f }, Y { 0.0f }, Z { 0.0f }, W { 1.0f } { }
+	constexpr Quaternion(float x, float y, float z, float w) : X { x }, Y { y }, Z { z }, W { w } { }
+	constexpr Quaternion(const noinit_t&) { }
+
+	constexpr void Normalize()
+	{
+		float mag = X * X + Y * Y + Z * Z + W * W;
+		if (mag != 0.0)
+		{
+			X /= mag;
+			Y /= mag;
+			Z /= mag;
+			W /= mag;
+		}
+	}
+
+	constexpr void Scale(float scale)
+	{
+		X *= scale;
+		Y *= scale;
+		Z *= scale;
+		W *= scale;
+	}
+
+	constexpr float& operator[](int idx)
+	{ return (&X)[idx]; }
+
+	constexpr float operator[](int idx) const
+	{ return (&X)[idx]; }
+
+	constexpr Quaternion& operator=(Quaternion& another)
+	{
+		X = another.X;
+		Y = another.Y;
+		Z = another.Z;
+		W = another.W;
+		return *this;
+	}
+
+	Quaternion Inverse(const Quaternion& value)
+	{ return Quaternion { -X,-Y,-Z,-W }; }
+
+	Quaternion Conjugate(const Quaternion& value)
+	{ return Quaternion { -X,-Y,-Z,W }; }
+
+	static Quaternion* __fastcall Trackball(Quaternion* ret, float x0, float y0, float x1, float y1, float radius)
+	{ JMP_STD(0x646160); }
+
+	static Quaternion* __fastcall FromAxis(Quaternion* ret, const Vector3D<float>& src, float phi)
+	{ JMP_STD(0x646480); }
+
+	static Quaternion* __fastcall Slerp(Quaternion* ret, const Quaternion& a, const Quaternion& b, float alpha)
+	{ JMP_STD(0x646590); }
+
+	float X;
+	float Y;
+	float Z;
+	float W;
+};
 
 class Matrix3D
 {
@@ -102,7 +164,7 @@ public:
 
 	Matrix3D operator*(const Matrix3D& B) const
 	{
-		Matrix3D ret {noinit_t()};
+		Matrix3D ret { noinit_t() };
 		MatrixMultiply(&ret, this, &B);
 		return ret;
 	}
@@ -252,10 +314,22 @@ public:
 	static Matrix3D* __fastcall FromQuaternion(Matrix3D* mat, const Quaternion* q) { JMP_STD(0x646980); }
 	static Matrix3D FromQuaternion(const Quaternion& q)
 	{
-		Matrix3D buffer;
+		Matrix3D buffer { noinit_t() };
 		FromQuaternion(&buffer, &q);
 		return buffer;
 	}
+
+	static Quaternion* __fastcall ToQuaternion(Quaternion* ret, const Matrix3D* mat)
+	{ JMP_STD(0x646730); }
+
+	Quaternion ToQuaternion() const
+	{
+		Quaternion ret { noinit_t() };
+		ToQuaternion(&ret, this);
+		return ret;
+	}
+
+
 	void ApplyQuaternion(const Quaternion& q)
 	{
 		*this = FromQuaternion(q) * *this;
@@ -266,7 +340,7 @@ public:
 
 	static Matrix3D GetIdentity()
 	{
-		Matrix3D mtx {noinit_t()};
+		Matrix3D mtx { noinit_t() };
 		mtx.MakeIdentity();
 		return mtx;
 	}
