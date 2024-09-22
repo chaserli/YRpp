@@ -63,6 +63,14 @@ public:
 		: AnimClass(noinit_t())
 	{ JMP_THIS(0x421EA0); }
 
+	// Anim start logic: sound event handling, tiberium chain reaction etc.
+	void Start() const
+		{ JMP_THIS(0x424CE0); }
+
+	// Anim midpoint logic: particle spawning, smudges etc.
+	bool Middle() const
+		{ JMP_THIS(0x424F00); }
+
 protected:
 	explicit __forceinline AnimClass(noinit_t) noexcept
 		: ObjectClass(noinit_t())
