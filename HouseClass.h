@@ -733,6 +733,9 @@ public:
 	double GetWeedStoragePercentage()
 		{ JMP_THIS(0x4F9750); }
 
+	bool AISupers()
+		{ JMP_THIS(0x50B1D0); }
+
 	//Constructor
 	HouseClass(HouseTypeClass* pCountry) noexcept
 		: HouseClass(noinit_t())
