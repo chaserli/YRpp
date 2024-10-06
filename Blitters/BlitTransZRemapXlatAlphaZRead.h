@@ -30,7 +30,7 @@ public:
 				if (byte idx = *src++)
 					*dest = PaletteData[*Remap[idx] | adata[*abuf]];
 			}
-			
+
 			++dest;
 			++abuf;
 

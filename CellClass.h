@@ -407,7 +407,7 @@ public:
 
 	PassabilityType    Passability;
 	int                WallOwnerIndex; // Which House owns the wall placed in this Cell?
-	                                              // Determined by finding the nearest BuildingType and taking its owner
+	//                                 // Determined by finding the nearest BuildingType and taking its owner
 	int                InfantryOwnerIndex;
 	int                AltInfantryOwnerIndex;
 	DWORD              unknown_5C;

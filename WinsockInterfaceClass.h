@@ -5,16 +5,16 @@
 
 struct __declspec(align(4)) WinsockBufferType
 {
-  char Header[16];
-  int BufferLen;
-  char IsBroadcast;
-  BYTE InUse;
-  BYTE Allocated;
-  char Bool1;
-  char Bool2;
-  int16_t SrcPort;
-  int CRC;
-  char Buffer[640];
+	char Header[16];
+	int BufferLen;
+	char IsBroadcast;
+	BYTE InUse;
+	BYTE Allocated;
+	char Bool1;
+	char Bool2;
+	int16_t SrcPort;
+	int CRC;
+	char Buffer[640];
 };
 static_assert(sizeof(WinsockBufferType) == 0x2A0);
 
@@ -22,19 +22,19 @@ class __declspec(align(4)) WinsockInterfaceClass
 {
 public:
 	// Static
-	static constexpr reference<WinsockInterfaceClass*, 0x887628u> const Instance{};
+	static constexpr reference<WinsockInterfaceClass*, 0x887628u> const Instance {};
 
 	bool Init()
-		{ JMP_THIS(0x7B1DE0) }
+		JMP_THIS(0x7B1DE0);
 
 	bool StartListening()
-		{ JMP_THIS(0x7B1BC0) }
+		JMP_THIS(0x7B1BC0);
 
 	void DiscardInBuffers()
-		{ JMP_THIS(0x7B1CA0) }
+		JMP_THIS(0x7B1CA0);
 
 	void DiscardOutBuffers()
-		{ JMP_THIS(0x7B1D10) }
+		JMP_THIS(0x7B1D10);
 
 	// Properties
 private:

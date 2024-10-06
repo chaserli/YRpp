@@ -62,7 +62,7 @@ private:
 	constexpr EnumFlagHelper<FLAG_ENUM_NAME> operator| (FLAG_ENUM_NAME lhs, EnumFlagHelper<FLAG_ENUM_NAME> rhs) { \
 		return EnumFlagHelper<FLAG_ENUM_NAME>(lhs) | rhs; \
 	} \
-	 \
+	\
 	constexpr EnumFlagHelper<FLAG_ENUM_NAME> operator| (FLAG_ENUM_NAME lhs, FLAG_ENUM_NAME rhs) { \
 		return EnumFlagHelper<FLAG_ENUM_NAME>(lhs) | rhs; \
 	} \
@@ -76,4 +76,3 @@ private:
 		using type = std::underlying_type_t<FLAG_ENUM_NAME>; \
 		return static_cast<FLAG_ENUM_NAME>(~static_cast<type>(rhs)); \
 	} \
-

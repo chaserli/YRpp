@@ -59,28 +59,28 @@ public:
 	virtual Layer InWhichLayer() const RT(Layer);
 	virtual bool IsSurfaced() { JMP_THIS(0x5F6C10); } // opposed to being submerged
 
- /*
-  	Building returns if it is 1x1 and has UndeploysInto
-  	inf returns 0
-  	unit returns !NonVehicle
-  	Aircraft returns IsOnFloor()
+/*
+	Building returns if it is 1x1 and has UndeploysInto
+	inf returns 0
+	unit returns !NonVehicle
+	Aircraft returns IsOnFloor()
 
-  users include:
-  452656 - is this building click-repairable
-  440C26 - should this building get considered in BaseSpacing
-  445A8E - -""-
-  51E7D1 - can a VehicleThief be clicked to steal this unit
-  51E4D9 - can an engi be clicked to enter this to fix/takeover
-  51F0D3 - -""-
-  51EA06 - can this building be C4'd?
-  51E243 - can a VehicleThief steal this on his own decision
-  4F93F3 - should this building's damage raise a BaseUnderAttack?
-  442286 - -""-
-  44296A - -""-
-  741117 - can this be healed by a vehicle?
-  6F8242 - can this aircraft be auto-target
-  6F85BE - can this aircraft be auto-attacked
-  */
+	users include:
+	452656 - is this building click-repairable
+	440C26 - should this building get considered in BaseSpacing
+	445A8E - -""-
+	51E7D1 - can a VehicleThief be clicked to steal this unit
+	51E4D9 - can an engi be clicked to enter this to fix/takeover
+	51F0D3 - -""-
+	51EA06 - can this building be C4'd?
+	51E243 - can a VehicleThief steal this on his own decision
+	4F93F3 - should this building's damage raise a BaseUnderAttack?
+	442286 - -""-
+	44296A - -""-
+	741117 - can this be healed by a vehicle?
+	6F8242 - can this aircraft be auto-target
+	6F85BE - can this aircraft be auto-attacked
+*/
 	virtual bool IsStrange() const R0;
 
 	virtual TechnoTypeClass* GetTechnoType() const R0;
@@ -120,7 +120,7 @@ public:
 
 	virtual void RegisterDestruction(TechnoClass *Destroyer) RX;
 
-	 // maybe Object instead of Techno? Raises Map Events, grants veterancy, increments house kill counters
+	// maybe Object instead of Techno? Raises Map Events, grants veterancy, increments house kill counters
 	virtual void RegisterKill(HouseClass *Destroyer) RX; // ++destroyer's kill counters , etc
 
 	virtual bool SpawnParachuted(const CoordStruct& coords) R0;
@@ -157,7 +157,7 @@ public:
 	virtual bool IsCloseEnough3D(DWORD dwUnk, DWORD dwUnk2) const R0;
 	virtual int GetWeaponRange(int idxWeapon) const R0;
 	virtual DamageState ReceiveDamage(int* pDamage, int DistanceFromEpicenter, WarheadTypeClass* pWH,
-	  ObjectClass* Attacker, bool IgnoreDefenses, bool PreventPassengerEscape, HouseClass* pAttackingHouse) RT(DamageState);
+		ObjectClass* Attacker, bool IgnoreDefenses, bool PreventPassengerEscape, HouseClass* pAttackingHouse) RT(DamageState);
 	virtual void Destroy() RX;
 	virtual void Scatter(const CoordStruct &crd, bool ignoreMission, bool ignoreDestination) RX;
 	virtual bool Ignite() R0;
@@ -198,11 +198,10 @@ public:
 	// draws the mind control line when unit is selected
 	static void DrawALinkTo(int src_X, int src_Y, int src_Z, int dst_X, int dst_Y, int dst_Z, ColorStruct color)
 		{ PUSH_VAR32(color); PUSH_VAR32(dst_Z); PUSH_VAR32(dst_Y); PUSH_VAR32(dst_X);
-		  PUSH_VAR32(src_Z); PUSH_VAR32(src_Y); PUSH_VAR32(src_X); CALL(0x704E40); }
+			PUSH_VAR32(src_Z); PUSH_VAR32(src_Y); PUSH_VAR32(src_X); CALL(0x704E40); }
 
 	int DistanceFrom(AbstractClass *that) const
 		{ JMP_THIS(0x5F6440); }
-
 
 	double GetHealthPercentage() const
 		{ return static_cast<double>(this->Health) / this->GetType()->Strength; }
@@ -281,43 +280,41 @@ protected:
 	//===========================================================================
 	//===== Properties ==========================================================
 	//===========================================================================
-
 public:
-
 	DWORD              unknown_24;
 	DWORD              unknown_28;
-	int                FallRate; //how fast is it falling down? only works if FallingDown is set below, and actually positive numbers will move the thing UPWARDS
-	ObjectClass*       NextObject;	//Next Object in the same cell or transport. This is a linked list of Objects.
-	TagClass*          AttachedTag; //Should be TagClass , TODO: change when implemented
-	BombClass*         AttachedBomb; //Ivan's little friends.
+	int                FallRate;     // how fast is it falling down? only works if FallingDown is set below, and actually positive numbers will move the thing UPWARDS
+	ObjectClass*       NextObject;   // Next Object in the same cell or transport. This is a linked list of Objects.
+	TagClass*          AttachedTag;  // Should be TagClass , TODO: change when implemented
+	BombClass*         AttachedBomb; // Ivan's little friends.
 	DECLARE_PROPERTY(AudioController, AmbientSoundController); // the "mofo" struct, evil evil stuff
-	DECLARE_PROPERTY(AudioController, CustomSoundController); // the "mofo" struct, evil evil stuff
+	DECLARE_PROPERTY(AudioController, CustomSoundController);  // the "mofo" struct, evil evil stuff
 	int                CustomSound;
-	bool               BombVisible; // In range of player's bomb seeing units, so should draw it
+	bool               BombVisible;    // In range of player's bomb seeing units, so should draw it
 	PROTECTED_PROPERTY(BYTE, align_69[0x3]);
-	int                Health;		//The current Health.
-	int                EstimatedHealth; // used for auto-targeting threat estimation
-	bool               IsOnMap; // has this object been placed on the map?
+	int                Health;         // The current Health.
+	int                EstimatedHealth;// used for auto-targeting threat estimation
+	bool               IsOnMap;        // has this object been placed on the map?
 	PROTECTED_PROPERTY(BYTE, align_75[0x3]);
 	DWORD              unknown_78;
 	DWORD              unknown_7C;
 	bool               NeedsRedraw;
-	bool               InLimbo; // act as if it doesn't exist - e.g., post mortem state before being deleted
+	bool               InLimbo;        // act as if it doesn't exist - e.g., post mortem state before being deleted
 	bool               InOpenToppedTransport;
-	bool               IsSelected;	//Has the player selected this Object?
-	bool               HasParachute;	//Is this Object parachuting?
+	bool               IsSelected;     // Has the player selected this Object?
+	bool               HasParachute;   // Is this Object parachuting?
 	PROTECTED_PROPERTY(BYTE, align_85[0x3]);
-	AnimClass*         Parachute;		//Current parachute Anim.
+	AnimClass*         Parachute;      // Current parachute Anim.
 	bool               OnBridge;
 	bool               IsFallingDown;
 	bool               WasFallingDown; // last falling state when FootClass::Update executed. used to find out whether it changed.
-	bool               IsABomb; // if set, will explode after FallingDown brings it to contact with the ground
-	bool               IsAlive;		//Self-explanatory.
+	bool               IsABomb;        // if set, will explode after FallingDown brings it to contact with the ground
+	bool               IsAlive;        // Self-explanatory.
 	PROTECTED_PROPERTY(BYTE, align_91[0x3]);
 	Layer              LastLayer;
-	bool               IsInLogic; // has this object been added to the logic collection?
-	bool               IsVisible; // was this object in viewport when drawn?
+	bool               IsInLogic;      // has this object been added to the logic collection?
+	bool               IsVisible;      // was this object in viewport when drawn?
 	PROTECTED_PROPERTY(BYTE, align_99[0x2]);
-	CoordStruct        Location; //Absolute current 3D location (in leptons)
+	CoordStruct        Location;       // Absolute current 3D location (in leptons)
 	LineTrail*         LineTrailer;
- };
+};

@@ -6,7 +6,7 @@ class NOVTABLE ControlClass : public GadgetClass
 {
 public:
 	//TODO overrides
-	
+
 	//Virtual
 	virtual void MakePeer(GadgetClass* pGadget) RX;
 

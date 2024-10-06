@@ -18,8 +18,7 @@ public:
 protected:
 	explicit __forceinline ToggleClass(noinit_t)  noexcept
 		: ControlClass(noinit_t())
-	{
-	}
+	{ }
 
 	//Properties
 public:

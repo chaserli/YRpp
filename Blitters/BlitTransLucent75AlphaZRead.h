@@ -30,7 +30,7 @@ public:
 				if (byte idx = *src++)
 					*dest = 3 * (Mask & (*dest >> 2)) + (Mask & (PaletteData[idx | adata[*abuf]] >> 2));
 			}
-			
+
 			++dest;
 			++abuf;
 

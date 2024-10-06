@@ -19,19 +19,19 @@ class CellClass;
 class NOVTABLE TacticalClass : public AbstractClass
 {
 public:
-	static constexpr reference<TacticalClass*, 0x887324u> const Instance{};
+	static constexpr reference<TacticalClass*, 0x887324u> const Instance {};
 
 	virtual bool sub_6DBB60(CoordStruct const& a2, CoordStruct const& a3, COLORREF a4, DWORD dwUnk) R0;
 
 	void SetTacticalPosition(CoordStruct* pCoord)
-		{ JMP_THIS(0x6D6070); }
+		JMP_THIS(0x6D6070);
 
 	CellStruct* CoordsToCell(CellStruct* pDest, CoordStruct* pSource)
-		{ JMP_THIS(0x6D6590); }
+		JMP_THIS(0x6D6590);
 
 	[[deprecated]]// inlined in game
 	bool CoordsToClient(CoordStruct const* coords, Point2D* pOutClient) const
-		{ JMP_THIS(0x6D2140); }
+		JMP_THIS(0x6D2140);
 
 	// returns whether coords are visible at the moment
 	std::pair<Point2D, bool> CoordsToClient(const CoordStruct& coords) const
@@ -45,7 +45,7 @@ public:
 
 	[[deprecated]] // inlined in game
 	Point2D* CoordsToScreen(Point2D* pDest, const CoordStruct* pSource)
-		{ JMP_THIS(0x6D1F10); }
+		JMP_THIS(0x6D1F10);
 
 	static Point2D CoordsToScreen(const CoordStruct& coord)
 	{
@@ -54,21 +54,22 @@ public:
 	}
 
 	CoordStruct* ClientToCoords(CoordStruct* pOutBuffer, Point2D const& client) const
-		{ JMP_THIS(0x6D2280); }
+		JMP_THIS(0x6D2280);
 
-	CoordStruct ClientToCoords(Point2D const& client) const {
+	CoordStruct ClientToCoords(Point2D const& client) const
+	{
 		CoordStruct buffer;
 		this->ClientToCoords(&buffer, client);
 		return buffer;
 	}
 
 	char GetOcclusion(const CellStruct& cell, bool fog) const
-		{ JMP_THIS(0x6D8700); }
+		JMP_THIS(0x6D8700);
 
 	/*
 	[[deprecated]] // inlined in game
 	Point2D * AdjustForZShapeMove(Point2D* pDest, Point2D* pClient)
-		{ JMP_THIS(0x6D1FE0); }
+		JMP_THIS(0x6D1FE0);
 	*/
 
 	// wrong name
@@ -82,7 +83,7 @@ public:
 
 	// in-game height to on-screen height
 	static int __fastcall AdjustForZ(int Height)
-		//{ JMP_STD(0x6D20E0); } // inlined in game
+		//JMP_STD(0x6D20E0); } // inlined in ga
 	{
 		// constexpr double sin60 = Math::Sqrt3 / 2;
 		// constexpr double pixelPerLepton = Unsorted::CellWidthInPixels / (Math::Sqrt2 * Unsorted::LeptonsPerCell);
@@ -92,38 +93,38 @@ public:
 	}
 
 	void FocusOn(CoordStruct* pDest, int Velocity)
-		{ JMP_THIS(0x6D2420); }
+		JMP_THIS(0x6D2420);
 
 
 	// called when area needs to be marked for redrawing due to external factors
 	// - alpha lights, terrain changes like cliff destruction, etc
 	void RegisterDirtyArea(RectangleStruct Area, bool bUnk)
-		{ JMP_THIS(0x6D2790); }
+		JMP_THIS(0x6D2790);
 
 	void RegisterCellAsVisible(CellClass* pCell)
-		{ JMP_THIS(0x6DA7D0) };
+		JMP_THIS(0x6DA7D0)
 
-	static int DrawTimer(int index, ColorScheme *Scheme, int Time, wchar_t *Text, Point2D *someXY1, Point2D *someXY2)
-		{ JMP_STD(0x6D4B50); }
+		static int DrawTimer(int index, ColorScheme* Scheme, int Time, wchar_t* Text, Point2D* someXY1, Point2D* someXY2)
+		JMP_STD(0x6D4B50);
 
 	void AddSelectable(TechnoClass* pTechno, int x, int y)
-		{ JMP_THIS(0x6D9EF0) };
+		JMP_THIS(0x6D9EF0);
 
 	/*
 	*   TacticalRenderMode_0_ALL = 0x0,
-	*	TacticalRenderMode_TERRAIN = 0x1,
-	*	TacticalRenderMode_MOVING_ANIMATING = 0x2,
-	*	TacticalRenderMode_3_ALL = 0x3,
-	*	TacticalRenderMode_STOPDRAWING = 0x4,
-	*	TacticalRenderMode_5 = 0x5,
+	*   TacticalRenderMode_TERRAIN = 0x1,
+	*   TacticalRenderMode_MOVING_ANIMATING = 0x2,
+	*   TacticalRenderMode_3_ALL = 0x3,
+	*   TacticalRenderMode_STOPDRAWING = 0x4,
+	*   TacticalRenderMode_5 = 0x5,
 	*/
 	void Render(DSurface* pSurface, bool flag, int eMode)
-		{ JMP_THIS(0x6D3D10); }
+		JMP_THIS(0x6D3D10);
 
 	[[deprecated]]
-	Point2D* ApplyMatrix_Pixel(Point2D *coords, Point2D *offset)
-		{ JMP_THIS(0x6D2070); }
-	
+	Point2D* ApplyMatrix_Pixel(Point2D* coords, Point2D* offset)
+		JMP_THIS(0x6D2070);
+
 	Point2D ApplyMatrix_Pixel(const Point2D& offset)
 	{
 		auto&& temp = this->IsoTransformMatrix * Vector3D<float>{(float)offset.X, (float)offset.Y, 0};
@@ -131,7 +132,6 @@ public:
 	}
 
 public:
-
 	wchar_t ScreenText[64];
 	int EndGameGraphicsFrame;
 	int LastAIFrame;
@@ -146,7 +146,7 @@ public:
 	float field_D8;
 	float field_DC;
 	int VisibleCellCount;
-	CellClass * VisibleCells [800];
+	CellClass* VisibleCells[800];
 	Point2D TacticalCoord1;
 	DWORD field_D6C;
 	DWORD field_D70;

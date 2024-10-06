@@ -61,12 +61,10 @@ class BufferStraw : public Straw
 public:
 	explicit BufferStraw() = delete;
 	explicit BufferStraw(void* pBuffer, size_t nLength) : Straw {}, Buffer { pBuffer,nLength }
-	{ 
-	}
+	{ }
 
 	virtual ~BufferStraw() override final
-	{
-	}
+	{ }
 
 	virtual int Get(void* pBuffer, int slen) override final
 	{
@@ -89,7 +87,7 @@ public:
 	}
 
 	MemoryBuffer Buffer;
-	int Index {0};
+	int Index { 0 };
 
 private:
 	BufferStraw(BufferStraw& rvalue) = delete;
@@ -121,9 +119,7 @@ public:
 	}
 
 	virtual int Get(void* pBuffer, int slen) override final
-	{
 		JMP_THIS(0x552490);
-	}
 
 	BOOL Control;
 	int Counter;

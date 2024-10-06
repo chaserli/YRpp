@@ -16,7 +16,7 @@ public:
 	static constexpr reference<BombListClass, 0x87F5D8u> const Instance{};
 
 	// draws all the visible bombs, expires the outdated ones
- 	void Update()
+	void Update()
 		{ JMP_THIS(0x438BF0); }
 
 	// the main one, ivan planting a bomb (creates a BombClass inside)
@@ -38,10 +38,8 @@ protected:
 	//===========================================================================
 	//===== Properties ==========================================================
 	//===========================================================================
-
 public:
-
-	DynamicVectorClass<BombClass *> Bombs;				//all the BombClass instances on the map
-	DynamicVectorClass<TechnoClass *> Detectors;		//all the BombSight'ed objects currently on the map
-	int UpdateDelay; // defaults to 100, some iterators set it to 1
+	DynamicVectorClass<BombClass *> Bombs;       // all the BombClass instances on the map
+	DynamicVectorClass<TechnoClass *> Detectors; // all the BombSight'ed objects currently on the map
+	int UpdateDelay;                             // defaults to 100, some iterators set it to 1
 };

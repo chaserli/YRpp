@@ -13,7 +13,7 @@ public:
 	static const AbstractType AbsID = AbstractType::Event;
 
 	//Static
-	static constexpr constant_ptr<DynamicVectorClass<TEventClass*>, 0xB0F1A0u> const Array{};
+	static constexpr constant_ptr<DynamicVectorClass<TEventClass*>, 0xB0F1A0u> const Array {};
 
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
@@ -29,40 +29,43 @@ public:
 	virtual AbstractType WhatAmI() const RT(AbstractType);
 	virtual int Size() const R0;
 
-
 	// you are responsible for doing INI::ReadString and strtok'ing it before calling
 	// this func only calls strtok again, doesn't know anything about buffers
 	void LoadFromINI()
-		{ JMP_THIS(0x71F4E0); }
+		JMP_THIS(0x71F4E0);
 
 	// you allocate the buffer for this, and save it to ini yourself after this returns
 	// this func only sprintf's the stuff it needs into buffer
-	void PrepareSaveToINI(char *buffer) const
-		{ JMP_THIS(0x71F390); }
+	void PrepareSaveToINI(char* buffer) const
+		JMP_THIS(0x71F390);
 
 	static TriggerAttachType __fastcall GetAttachType(int eventKind)
-		{ JMP_STD(0x71F680); }
+		JMP_STD(0x71F680);
 
 	// used in TriggerClass::HaveEventsOccured , when trigger is repeating
 	// both need to be true to check this event as done
 	bool GetStateA() const
-		{ JMP_THIS(0x71F950); }
+		JMP_THIS(0x71F950);
+
 	bool GetStateB() const
-		{ JMP_THIS(0x71F9C0); }
+		JMP_THIS(0x71F9C0);
 
 	// main brain
 	bool HasOccured(
 		int eventKind,
-		HouseClass *pHouse,
-		ObjectClass *Object,
-		CDTimerClass *ActivationFrame,
-		bool *isRepeating) const
-			{ JMP_THIS(0x71E940); }
+		HouseClass* pHouse,
+		ObjectClass* Object,
+		CDTimerClass* ActivationFrame,
+		bool* isRepeating
+	) const
+		JMP_THIS(0x71E940);
 
 	//Constructor
 	TEventClass() noexcept
 		: TEventClass(noinit_t())
-	{ JMP_THIS(0x71E6A0); }
+	{
+		JMP_THIS(0x71E6A0);
+	}
 
 protected:
 	explicit __forceinline TEventClass(noinit_t) noexcept
@@ -74,11 +77,11 @@ protected:
 	//===========================================================================
 
 public:
-	int               ArrayIndex;
-	TEventClass*      NextEvent;
-	TriggerEvent      EventKind;
-	TeamTypeClass*    TeamType; // If this event needs to reference a team type, then this is the pointer to the team type object.
-	int               Value;
-	char		      String[0x1C];
-	HouseClass*       House;
+	int ArrayIndex;
+	TEventClass* NextEvent;
+	TriggerEvent EventKind;
+	TeamTypeClass* TeamType; // If this event needs to reference a team type, then this is the pointer to the team type object.
+	int Value;
+	char String[0x1C];
+	HouseClass* House;
 };

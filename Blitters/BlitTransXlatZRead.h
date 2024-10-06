@@ -27,7 +27,7 @@ public:
 				if(byte idx = *src)
 					*dest = PaletteData[idx];
 			}
-				
+
 			++src;
 			++dest;
 

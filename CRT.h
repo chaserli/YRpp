@@ -124,7 +124,7 @@ public:
 			{ JMP_STD(0x7CB7BA); }
 
 		static char * __fastcall strtrim(char * Buffer)
-		    { JMP_STD(0x727CF0); }
+			{ JMP_STD(0x727CF0); }
 
 		static size_t __cdecl strlen(const char *input)
 			{ JMP_STD(0x7D15A0); }

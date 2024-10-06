@@ -75,39 +75,51 @@ public:
 	virtual void Update() override JMP_THIS(0x74CE50);
 
 	//ObjectClass
-	virtual void DrawIt(Point2D* pLocation, RectangleStruct* pBounds) const override JMP_THIS(0x74D490); //114
-	virtual DamageState ReceiveDamage(int* pDamage, int DistanceFromEpicenter, WarheadTypeClass* pWH,
-  ObjectClass* Attacker, bool IgnoreDefenses, bool PreventPassengerEscape, HouseClass* pAttackingHouse) override JMP_THIS(0x74D5D0);
+	virtual void DrawIt(Point2D* pLocation, RectangleStruct* pBounds) const override
+		JMP_THIS(0x74D490); //114
+
+	virtual DamageState ReceiveDamage(
+		int* pDamage,
+		int DistanceFromEpicenter,
+		WarheadTypeClass* pWH,
+		ObjectClass* Attacker,
+		bool IgnoreDefenses,
+		bool PreventPassengerEscape,
+		HouseClass* pAttackingHouse
+	) override
+		JMP_THIS(0x74D5D0);
 
 	static VeinholeMonsterClass* __fastcall GetVeinholeMonsterAt(CellStruct* pCell)
-	{ JMP_STD(0x74CDB0); }
+		JMP_STD(0x74CDB0);
 
 	static VeinholeMonsterClass* __fastcall GetVeinholeMonsterFrom(CellStruct* pCell)
-	{ JMP_STD(0x74CD60); }
+		JMP_STD(0x74CD60);
 
 	void RemoveFrom(CellClass* pCell) const
-	{ JMP_THIS(0x74EF10); }
+		JMP_THIS(0x74EF10);
 
 	void ClearVector() const
-	{ JMP_THIS(0x74EA30); }
+		JMP_THIS(0x74EA30);
 
 	void ClearGrowthData()
-	{ GrowthLogic.Destruct(); }
+	{
+		GrowthLogic.Destruct();
+	}
 
 	void Recalculate() const
-	{ JMP_THIS(0x74E930); }
+		JMP_THIS(0x74E930);
 
 	void RecalculateSpread() const
-	{ JMP_THIS(0x74E6B0); }
+		JMP_THIS(0x74E6B0);
 
 	void Func_74E1C0_RecalculateCellVector() const
-	{ JMP_THIS(0x74E1C0); }
+		JMP_THIS(0x74E1C0);
 
 	void Func_74DC00() const
-	{ JMP_THIS(0x74DC00); }
+		JMP_THIS(0x74DC00);
 
 	void UpdateGrowth() const
-	{ JMP_THIS(0x74D7C0); }
+		JMP_THIS(0x74D7C0);
 
 	static void __fastcall ClearVeinGrowthData()
 	{
@@ -130,40 +142,40 @@ public:
 
 	//called 687A80
 	static void __fastcall InitVeinGrowthData(bool bAllocate = true)
-	{ JMP_STD(0x74DE90); }
+		JMP_STD(0x74DE90);
 
 	static bool __fastcall IsCellEligibleForVeinHole(CellStruct& nWhere)
-	{ JMP_STD(0x74D670); }
+		JMP_STD(0x74D670);
 
 	static void __fastcall TheaterInit(TheaterType nType)
-	{ JMP_STD(0x74D450); }
+		JMP_STD(0x74D450);
 
 	static TerrainTypeClass* __fastcall GetTerrainType()
-	{ JMP_STD(0x74EF00); }
+		JMP_STD(0x74EF00);
 
 	static HRESULT __fastcall SaveVector(void* stream, DynamicVectorClass<VeinholeMonsterClass*>* a2)
-	{ JMP_STD(0x74ED60); }
+		JMP_STD(0x74ED60);
 
 	static HRESULT __fastcall LoadVector(LPSTREAM a1)
-	{ JMP_STD(0x74EA70); }
+		JMP_STD(0x74EA70);
 
 	static void __fastcall DestroyAll()
-	{ JMP_STD(0x74EA30); }
+		JMP_STD(0x74EA30);
 
 	static void __fastcall DrawAll()
-	{ JMP_STD(0x74D430); }
+		JMP_STD(0x74D430);
 
 	static void __fastcall DeleteAll()
-	{ JMP_STD(0x74D760); }
+		JMP_STD(0x74D760);
 
 	static void __fastcall DeleteVeinholeGrowthData()
-	{ JMP_STD(0x74E880); }
+		JMP_STD(0x74E880);
 
 	static void __fastcall LoadVeinholeArt(int idxTheatre)
-	{ JMP_STD(0x74D450); }
+		JMP_STD(0x74D450);
 
 	static void __cdecl UpdateAllVeinholes()
-	{ JMP_STD(0x74CDF0); }
+		JMP_STD(0x74CDF0);
 
 	static void __fastcall UpdateAll()
 	{

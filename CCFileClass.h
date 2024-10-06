@@ -188,7 +188,7 @@ public:
 	virtual const char* SetFileName(const char* pFileName) override JMP_THIS(0x47AE10);
 	virtual bool Open(FileAccessMode access) override JMP_THIS(0x47AAB0);
 	virtual bool OpenEx(const char* pFileName, FileAccessMode access) override JMP_THIS(0x47AF10);
-	
+
 	//Constructor
 	CDFileClass()
 		: CDFileClass(noinit_t())

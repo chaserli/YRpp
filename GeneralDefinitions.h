@@ -1501,7 +1501,7 @@ enum class QuarryType : unsigned int
 	Threats,						// Attack enemies near friendly base.
 	Power,							// Attack power facilities.
 	OccupiableBuildings,			// Prefer to attack occupiable buildings.
-	TechBuildings					// Prefer to attack tech buildings.	
+	TechBuildings					// Prefer to attack tech buildings.
 };
 
 enum class ThreatType : unsigned int
@@ -1685,7 +1685,7 @@ enum class ZoneType : int
 	West = 4
 };
 
-enum class PCPType : unsigned char // Per_Cell_Process 
+enum class PCPType : unsigned char // Per_Cell_Process
 {
 	Rotation = 0,		// When sitting in place and performing rotations.
 	During = 1,			// While moving between two cells. Is this ever used? Tell me if you found any
