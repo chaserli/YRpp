@@ -45,23 +45,19 @@ public:
 	static constexpr constant_ptr<DynamicVectorClass<AbstractClass*>, 0xB0F720u> const Array{};
 	static constexpr reference<IndexClass<int, int>, 0xB0E840u> const TargetIndex{};
 
-	//static
-	const char* GetClassName() const
+	const char* GetRTTIName() const
 	{
-		return AbstractClass::GetClassName(this->WhatAmI());
+		return AbstractClass::GetRTTIName(this->WhatAmI());
 	}
 
-	static const char* GetClassName(AbstractType abs)
+	static const char* GetRTTIName(AbstractType abs)
 	{
-		const size_t TypeCount = 74;
-		const auto Types = reinterpret_cast<NamedValue(*)[TypeCount]>(0x816EE0);
-
-		for(const auto& Type : *Types) {
-			if(static_cast<AbstractType>(Type.Value) == abs) {
-				return Type.Name;
-			}
+		constexpr reference<std::pair<const char*, AbstractType>, 0x816EE0, 74> name_val_pairs;
+		for (const auto& [name, rtti] : name_val_pairs())
+		{
+			if (rtti == abs)
+				return name;
 		}
-
 		return nullptr;
 	}
 
