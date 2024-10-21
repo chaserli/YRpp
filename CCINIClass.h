@@ -357,10 +357,9 @@ public:
 	static CCINIClass* LoadINIFile(const char* pFileName)
 	{
 		CCINIClass* pINI = GameCreate<CCINIClass>();
-		CCFileClass* pFile = GameCreate<CCFileClass>(pFileName);
-		if (pFile->Exists())
-			pINI->ReadCCFile(pFile);
-		GameDelete(pFile);
+		CCFileClass file(pFileName);
+		if (file.Exists())
+			pINI->ReadCCFile(&file);
 		return pINI;
 	}
 

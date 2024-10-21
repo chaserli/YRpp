@@ -356,24 +356,24 @@ private:
 
 union VoxelIndexKey
 {
-	explicit VoxelIndexKey() noexcept
+	constexpr VoxelIndexKey(int val = 0) noexcept
 	{
-		*reinterpret_cast<int*>(this) = 0;
+		Value = val;
 	}
 
-	int Get_Index_ID() const
+	constexpr operator int () const
 	{
-		return *reinterpret_cast<const int*>(this);
+		return Value;
 	}
 
-	bool Is_Valid_Key() const
+	constexpr bool Is_Valid_Key() const
 	{
-		return Get_Index_ID() != -1;
+		return Value != -1;
 	}
 
-	void Invalidate()
+	constexpr void Invalidate()
 	{
-		*reinterpret_cast<int*>(this) = -1;
+		Value = -1;
 	}
 
 	MainVoxelIndexKey MainVoxel;
@@ -381,6 +381,8 @@ union VoxelIndexKey
 	ShadowVoxelIndexKey Shadow;
 	TurretBarrelVoxelIndexKey TurretBarrel;
 	ReservedVoxelIndexKey Reserved;
+private:
+	int Value;
 };
 
 static_assert(sizeof(VoxelIndexKey) == sizeof(int));
