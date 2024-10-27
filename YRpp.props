@@ -308,7 +308,6 @@
     <ClInclude Include="$(YRppDir)\UnitClass.h" />
     <ClInclude Include="$(YRppDir)\UnitTypeClass.h" />
     <ClInclude Include="$(YRppDir)\Unsorted.h" />
-    <ClInclude Include="$(YRppDir)\Vault.h" />
     <ClInclude Include="$(YRppDir)\VeinholeMonsterClass.h" />
     <ClInclude Include="$(YRppDir)\VocClass.h" />
     <ClInclude Include="$(YRppDir)\VoxClass.h" />

@@ -11,7 +11,7 @@ struct ColorStruct;
 class TechnoTypeClass;
 
 //Basic INI class
-class INIClass
+class NOVTABLE INIClass
 {
 public:
 	struct INIComment
@@ -53,7 +53,7 @@ protected:
 	INIClass(bool) { }
 
 public:
-	virtual ~INIClass() RX;
+	virtual ~INIClass() JMP_THIS(0x5256F0);
 
 	void Reset()
 		{ JMP_THIS(0x526B00); }
@@ -325,7 +325,7 @@ public:
 };
 
 //Extended INI class specified for C&C use
-class CCINIClass : public INIClass
+class NOVTABLE CCINIClass : public INIClass
 {
 public:
 	//STATIC
@@ -354,24 +354,13 @@ public:
 
 	virtual ~CCINIClass() RX;
 
-	static CCINIClass* LoadINIFile(const char* pFileName)
+	void LoadFromFile(const char* filename)
 	{
-		CCINIClass* pINI = GameCreate<CCINIClass>();
-		CCFileClass file(pFileName);
+		CCFileClass file { filename };
 		if (file.Exists())
-			pINI->ReadCCFile(&file);
-		return pINI;
+			this->ReadCCFile(&file);
 	}
-
-	static void UnloadINIFile(CCINIClass*& pINI)
-	{
-		if (pINI)
-		{
-			GameDelete(pINI);
-			pINI = nullptr;
-		}
-	}
-
+	
 	//Parses an INI file from a CCFile
 	CCINIClass* ReadCCFile(FileClass* pCCFile, bool bDigest = false, bool bLoadComments = false)
 		{ JMP_THIS(0x4741F0); }
