@@ -176,9 +176,6 @@ public:
 
 	static void __fastcall LogFrameCRC(int frameIndex)
 	{ JMP_STD(0x650A90); }
-
-	static void __fastcall GetKeyboardKeyString(unsigned short key, wchar_t* buffer)
-	{ JMP_STD(0x61EF70); }
 };
 
 // this fake class contains the IIDs used by the game
