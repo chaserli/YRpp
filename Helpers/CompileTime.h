@@ -9,12 +9,12 @@ struct constant_ptr {
 
 	constexpr constant_ptr() noexcept = default;
 	constant_ptr(constant_ptr&) = delete;
-public:
 
+private:
 	value_type get() const noexcept {
 		return reinterpret_cast<value_type>(Address);
 	}
-
+public:
 	operator value_type() const noexcept {
 		return get();
 	}
@@ -41,14 +41,14 @@ struct reference {
 
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
-public:
 
+private:
 	value_type& get() const noexcept {
 		// fixes" C2101: '&' on constant
 		static auto const address = Address;
 		return *reinterpret_cast<value_type*>(address);
 	}
-
+public:
 	operator value_type&() const noexcept {
 		return get();
 	}
@@ -93,12 +93,12 @@ struct reference<T, Address, 0> {
 
 	constexpr reference() noexcept = default;
 	reference(reference&) = delete;
-public:
 
+private:
 	value_type& get() const noexcept {
 		return *reinterpret_cast<value_type*>(Address);
 	}
-
+public:
 	template <typename T2>	requires std::assignable_from<T&,T2>
 		T& operator=(T2&& rhs) const
 	{
