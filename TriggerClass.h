@@ -11,6 +11,7 @@ class NOVTABLE TriggerClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Trigger;
+	static constexpr uintptr_t AbsVTable = 0x7F5858;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<TriggerClass*>, 0xA8EAE8u> const Array{};

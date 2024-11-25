@@ -12,7 +12,7 @@ class NOVTABLE BombClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Bomb;
-
+	static constexpr uintptr_t AbsVTable = 0x7E3D10;
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

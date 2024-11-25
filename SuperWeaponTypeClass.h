@@ -16,7 +16,7 @@ class NOVTABLE SuperWeaponTypeClass : public AbstractTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::SuperWeaponType;
-
+	static constexpr uintptr_t AbsVTable = 0x7F4090;
 	//Array
 	ABSTRACTTYPE_ARRAY(SuperWeaponTypeClass, 0xA8E330u);
 

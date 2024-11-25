@@ -82,10 +82,10 @@ public:
 		{ JMP_THIS(0x41F230); }
 
 	void FormatForSaving(char * buffer, size_t size) const {
-		const char *Team1Name = "<none>";
-		const char *Team2Name = "<none>";
-		const char *HouseName = "<none>";
-		const char *ConditionName = "<none>";
+		const char *Team1Name = GameStrings::_none_();
+		const char *Team2Name = GameStrings::_none_();
+		const char *HouseName = GameStrings::_none_();
+		const char *ConditionName = GameStrings::_none_();
 
 		TeamTypeClass *T = this->Team1;
 		if(T) {

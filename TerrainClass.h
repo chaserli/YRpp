@@ -12,6 +12,7 @@ class NOVTABLE TerrainClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Terrain;
+	static constexpr uintptr_t AbsVTable = 0x7F522C;
 
 	//global array
 	static constexpr constant_ptr<DynamicVectorClass<TerrainClass*>, 0xA8E988u> const Array{};

@@ -12,7 +12,7 @@ class NOVTABLE TeamClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Team;
-
+	static constexpr uintptr_t AbsVTable = 0x7F4730;
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<TeamClass*>, 0x8B40E8u> const Array {};
 

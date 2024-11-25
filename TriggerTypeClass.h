@@ -12,6 +12,7 @@ class NOVTABLE TriggerTypeClass : public AbstractTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::TriggerType;
+	static constexpr uintptr_t AbsVTable = 0x7F5904;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(TriggerTypeClass, 0x8B4178u);

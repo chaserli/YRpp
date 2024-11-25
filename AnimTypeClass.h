@@ -15,7 +15,7 @@ class NOVTABLE AnimTypeClass : public ObjectTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::AnimType;
-
+	static constexpr uintptr_t AbsVTable = 0x7E3608;
 	//Array
 	ABSTRACTTYPE_ARRAY(AnimTypeClass, 0x8B4150u);
 	static AnimTypeClass* __fastcall FindOrAllocate(const char* id)

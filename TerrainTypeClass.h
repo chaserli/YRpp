@@ -10,6 +10,7 @@ class NOVTABLE TerrainTypeClass : public ObjectTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::TerrainType;
+	static constexpr uintptr_t AbsVTable = 0x7F5458;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(TerrainTypeClass, 0xA8E318u);

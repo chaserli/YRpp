@@ -5,12 +5,13 @@
 #pragma once
 
 #include <GeneralDefinitions.h>
-#include <Helpers/CompileTime.h>
+#include <GameStrings.h>
 
 #define CSF_SIGNATURE 0x43534620 //" FSC"
 #define CSF_LABEL_SIGNATURE 0x4C424C20 //" LBL"
 #define CSF_VALUE_SIGNATURE 0x53545220 //" RTS"
 #define CSF_EXVALUE_SIGNATURE 0x53545257 //"WRTS"
+#define CSF_DUMMYFILE "FUCK_YOU"
 
 enum class CSFLanguages : unsigned int
 {
@@ -80,7 +81,7 @@ public:
 	static const wchar_t* __fastcall LoadString(
 		const char* pLabel,
 		char* pOutExtraData = nullptr,
-		const char* pSourceCodeFileName = __FILE__,
+		const char* pSourceCodeFileName = CSF_DUMMYFILE,
 		int nSourceCodeFileLine = __LINE__
 	)
 		JMP_STD(0x734E60);
@@ -89,11 +90,11 @@ public:
 		const char* pLabel,
 		const wchar_t* pDefault = L"",
 		char* pSpeech = nullptr,
-		const char* pFile = __FILE__,
+		const char* pFile = CSF_DUMMYFILE,
 		int nLine = __LINE__
 	)
 	{
-		if (pLabel && strlen(pLabel) && _strcmpi(pLabel, "<none>") && _strcmpi(pLabel, "none"))
+		if (pLabel && strlen(pLabel) && _strcmpi(pLabel, GameStrings::_none_()) && _strcmpi(pLabel, GameStrings::none()))
 			return LoadString(pLabel, pSpeech, pFile, nLine);
 		else
 			return pDefault;
@@ -103,11 +104,11 @@ public:
 		const char* pLabel,
 		const wchar_t* pDefault = L"",
 		char* pSpeech = nullptr,
-		const char* pFile = __FILE__,
+		const char* pFile = CSF_DUMMYFILE,
 		int nLine = __LINE__
 	)
 	{
-		if (pLabel && strlen(pLabel) && _strcmpi(pLabel, "<none>") && _strcmpi(pLabel, "none"))
+		if (pLabel && strlen(pLabel) && _strcmpi(pLabel, GameStrings::_none_()) && _strcmpi(pLabel, GameStrings::none()))
 		{
 			auto lpValue = LoadString(pLabel, pSpeech, pFile, nLine);
 			if (wcsncmp(lpValue, L"MISSING:", 8))

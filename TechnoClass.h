@@ -450,11 +450,11 @@ public:
 	{
 		JMP_THIS(0x706BD0);
 	}
-
+	/*
 	void DrawObject(SHPStruct* pSHP, int nFrame, Point2D* pLocation, RectangleStruct* pBounds,
 		int, int, int nZAdjust, ZGradient eZGradientDescIdx, int, int nBrightness, int TintColor,
 		SHPStruct* pZShape, int nZFrame, int nZOffsetX, int nZOffsetY, int);
-
+	*/
 	int sub_70DE00(int State)
 	{ JMP_THIS(0x70DE00); }
 

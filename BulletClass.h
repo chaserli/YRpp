@@ -26,7 +26,7 @@ class NOVTABLE BulletClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Bullet;
-
+	static constexpr uintptr_t AbsVTable = 0x7E46E4;
 	//Array
 	static constexpr constant_ptr<DynamicVectorClass<BulletClass*>, 0xA8ED40u> const Array{};
 

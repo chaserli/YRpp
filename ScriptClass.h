@@ -13,7 +13,7 @@ class NOVTABLE ScriptClass : public AbstractClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Script;
-
+	static constexpr uintptr_t AbsVTable = 0x7F0F78;
 	//IPersist
 	virtual HRESULT __stdcall GetClassID(CLSID* pClassID) R0;
 

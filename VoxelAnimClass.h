@@ -16,6 +16,7 @@ class NOVTABLE VoxelAnimClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::VoxelAnim;
+	static constexpr uintptr_t AbsVTable = 0x7F6318;
 
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<VoxelAnimClass*>, 0x887388u> const Array{};

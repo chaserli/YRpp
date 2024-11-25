@@ -23,6 +23,7 @@ class NOVTABLE WarheadTypeClass : public AbstractTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::WarheadType;
+	static constexpr uintptr_t AbsVTable = 0x7F6B30;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(WarheadTypeClass, 0x8874C0u);

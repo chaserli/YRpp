@@ -19,7 +19,7 @@ class NOVTABLE ScriptTypeClass : public AbstractTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::ScriptType;
-
+	static constexpr uintptr_t AbsVTable = 0x7F1008;
 	//Array
 	ABSTRACTTYPE_ARRAY(ScriptTypeClass, 0x8B41C8u);
 	static ScriptTypeClass* __fastcall FindOrAllocate(const char* id)

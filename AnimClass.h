@@ -19,7 +19,7 @@ class NOVTABLE AnimClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Anim;
-
+	static constexpr uintptr_t AbsVTable = 0x7E3354;
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<AnimClass*>, 0xA8E9A8u> const Array{};
 

@@ -14,7 +14,7 @@ class NOVTABLE ParticleClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Particle;
-
+	static constexpr uintptr_t AbsVTable = 0x7EF954;
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<ParticleClass*>, 0xA83DC8u> const Array{};
 

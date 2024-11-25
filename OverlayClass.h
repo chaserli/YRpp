@@ -40,7 +40,7 @@ class NOVTABLE OverlayClass : public ObjectClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::Overlay;
-
+	static constexpr uintptr_t AbsVTable = 0x7EF3D4;
 	//Static
 	static constexpr constant_ptr<DynamicVectorClass<OverlayClass*>, 0xA8EC50u> const Array{};
 

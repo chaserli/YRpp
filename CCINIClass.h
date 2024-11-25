@@ -5,7 +5,7 @@
 #include <ArrayClasses.h>
 #include <CCFileClass.h>
 #include <IndexClass.h>
-#include <Helpers/CompileTime.h>
+#include <GameStrings.h>
 
 struct ColorStruct;
 class TechnoTypeClass;
@@ -309,7 +309,7 @@ public:
 			{ JMP_STD(0x4770E0); }
 
 	static bool IsBlank(const char *pValue) {
-		return !_strcmpi(pValue, "<none>") || !_strcmpi(pValue, "none");
+		return !_strcmpi(pValue, GameStrings::_none_()) || !_strcmpi(pValue, GameStrings::none());
 	}
 
 	//Properties

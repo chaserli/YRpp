@@ -15,6 +15,7 @@ class NOVTABLE VoxelAnimTypeClass : public ObjectTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::VoxelAnimType;
+	static constexpr uintptr_t AbsVTable = 0x7F6548;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(VoxelAnimTypeClass, 0xA8EB28u);

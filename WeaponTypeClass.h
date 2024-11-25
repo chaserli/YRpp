@@ -16,6 +16,7 @@ class NOVTABLE WeaponTypeClass : public AbstractTypeClass
 {
 public:
 	static const AbstractType AbsID = AbstractType::WeaponType;
+	static constexpr uintptr_t AbsVTable = 0x7F73B8;
 
 	//Array
 	ABSTRACTTYPE_ARRAY(WeaponTypeClass, 0x887568u);
